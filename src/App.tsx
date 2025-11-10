@@ -1,10 +1,11 @@
-// src/App.tsx (수정된 최종 버전)
+// src/App.tsx
 import React, { useState, useCallback } from 'react';
 import Home from './pages/Home';
 import Test from './pages/Test';
 import Result from './pages/Result';
 import { useMbtiTest } from './hooks/useMbtiTest'; // 👈 Hook import
 
+// 앱의 상태 정의: 'home', 'test', 'result' 중 하나
 type AppStage = 'home' | 'test' | 'result';
 
 function App() {
@@ -31,7 +32,11 @@ function App() {
   // 테스트 완료 핸들러
   const handleFinish = useCallback(() => {
     calculateMbti(); // 결과 계산
-    setStage('result'); // 결과 페이지로 이동
+    // 상태 업데이트가 비동기적으로 이루어지므로, 다음 렌더링 사이클에서 결과 페이지로 이동
+    // setStage('result')를 바로 호출하면 Test 컴포넌트가 언마운트되면서 문제가 발생할 수 있습니다.
+    setTimeout(() => {
+      setStage('result');
+    }, 50); // 짧은 딜레이로 결과 계산 완료를 보장
   }, [calculateMbti]);
 
   // 테스트 재시작 핸들러
