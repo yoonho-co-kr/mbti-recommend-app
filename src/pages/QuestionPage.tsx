@@ -1,5 +1,5 @@
 // src/pages/QuestionPage.tsx
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { questions } from '../data/questions';
 
@@ -9,7 +9,14 @@ function QuestionPage() {
   const questionId = parseInt(id, 10);
   const question = questions.find(q => q.id === questionId);
 
-  const [scores, setScores] = useState({ E: 0, I: 0, S: 0, N: 0, T: 0, F: 0, J: 0, P: 0 });
+  const [scores, setScores] = useState(() => {
+    const savedScores = sessionStorage.getItem('mbtiScores');
+    return savedScores ? JSON.parse(savedScores) : { E: 0, I: 0, S: 0, N: 0, T: 0, F: 0, J: 0, P: 0 };
+  });
+
+  useEffect(() => {
+    sessionStorage.setItem('mbtiScores', JSON.stringify(scores));
+  }, [scores]);
 
   const handleAnswer = (type) => {
     const newScores = { ...scores, [type]: scores[type] + 1 };
@@ -18,8 +25,13 @@ function QuestionPage() {
     if (questionId < questions.length) {
       navigate(`/question/${questionId + 1}`);
     } else {
-      const result = Object.keys(newScores).reduce((a, b) => newScores[a] > newScores[b] ? a : b);
-      navigate(`/result/${result}`);
+      // Calculate MBTI type
+      let mbtiType = "";
+      mbtiType += newScores.E > newScores.I ? "E" : "I";
+      mbtiType += newScores.S > newScores.N ? "S" : "N";
+      mbtiType += newScores.T > newScores.F ? "T" : "F";
+      mbtiType += newScores.J > newScores.P ? "J" : "P";
+      navigate(`/result/${mbtiType}`);
     }
   };
 

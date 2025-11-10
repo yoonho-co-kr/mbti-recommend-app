@@ -13,7 +13,10 @@ function HomePage() {
           당신의 성격 유형을 알아보고, 꼭 맞는 직업을 찾아보세요!
         </p>
         <Link to="/question/1">
-          <button className="w-full bg-indigo-500 hover:bg-indigo-600 text-white font-semibold py-3 rounded-lg transition duration-150 text-xl">
+          <button
+            className="w-full bg-indigo-500 hover:bg-indigo-600 text-white font-semibold py-3 rounded-lg transition duration-150 text-xl"
+            onClick={() => sessionStorage.removeItem('mbtiScores')}
+          >
             테스트 시작하기
           </button>
         </Link>
