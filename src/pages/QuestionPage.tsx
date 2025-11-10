@@ -27,9 +27,17 @@ function QuestionPage() {
     return <div>잘못된 접근입니다.</div>;
   }
 
+  const progress = (questionId / questions.length) * 100;
+
   return (
     <div className="min-h-screen bg-gray-100 flex items-center justify-center p-4">
       <div className="w-full max-w-xl p-8 bg-white shadow-xl rounded-lg">
+        <div className="mb-4">
+          <div className="w-full bg-gray-200 rounded-full h-2.5">
+            <div className="bg-indigo-600 h-2.5 rounded-full" style={{ width: `${progress}%` }}></div>
+          </div>
+          <p className="text-center text-sm text-gray-600 mt-2">{questionId} / {questions.length}</p>
+        </div>
         <div className="text-center mb-8">
           <p className="text-2xl font-bold text-indigo-600">Q{question.id}</p>
           <h2 className="text-xl text-gray-800 mt-2">{question.question}</h2>
