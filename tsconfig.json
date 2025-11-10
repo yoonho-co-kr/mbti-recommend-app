@@ -1,0 +1,26 @@
+// tsconfig.json (프로젝트 루트)
+{
+  "compilerOptions": {
+    "target": "ES2020",
+    "useDefineForClassFields": true,
+    "lib": ["ES2020", "DOM", "DOMAOM"],
+    "module": "ESNext",
+    "skipLibCheck": true,
+
+    /* JSX, Module Resolution, 및 React 관련 설정 */
+    "jsx": "react-jsx", // 👈 JSX 코드를 React 컴파일러가 처리하도록 지정
+    "moduleResolution": "bundler",
+    "allowImportingTsExtensions": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+
+    /* Linting */
+    "strict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noFallthroughCasesInSwitch": true
+  },
+  "include": ["src"],
+  "references": [{ "path": "./tsconfig.node.json" }]
+}
