@@ -15,7 +15,13 @@ function HomePage() {
         <Link to="/question/1">
           <button
             className="w-full bg-indigo-500 hover:bg-indigo-600 text-white font-semibold py-3 rounded-lg transition duration-150 text-xl"
-            onClick={() => sessionStorage.removeItem('mbtiScores')}
+            onClick={() => {
+              const confirmRestart = window.confirm("테스트를 다시 시작하시겠습니까? 기존 진행 상황은 초기화됩니다.");
+              if (confirmRestart) {
+                sessionStorage.removeItem('mbtiScores');
+                sessionStorage.removeItem('userAnswers');
+              }
+            }}
           >
             테스트 시작하기
           </button>
