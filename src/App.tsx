@@ -6,7 +6,7 @@ import ResultPage from './pages/ResultPage';
 
 function App() {
   return (
-    <Router>
+    <Router basename="/mbti-recommend-app/">
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/question/:id" element={<QuestionPage />} />
