@@ -1,74 +1,97 @@
-# React + TypeScript + Vite
+````markdown
+# 🌟 MBTI 라이프 추천 가이드 (mbti-recommend-app)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+MBTI 테스트를 통해 사용자의 성격 유형을 진단하고, 그 결과에 따라 맞춤형 직업 및 라이프스타일 추천을 제공하는 싱글 페이지 애플리케이션(SPA)입니다.
 
-Currently, two official plugins are available:
+## ✨ 주요 기능
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+* **MBTI 테스트 진행:** 12가지 핵심 질문에 기반한 간결하고 신속한 테스트 환경 제공.
+* **유형별 결과 분석:** 16가지 MBTI 유형별 이름, 상세 설명, 그리고 추천 분야 제시.
+* **반응형 UI:** Tailwind CSS를 활용하여 모든 기기에서 최적화된 사용자 경험(UX) 제공.
+* **점수 시각화 (예정):** 테스트 후 각 지표(E/I, S/N, T/F, J/P)의 점수를 시각적으로 표시하여 분석의 신뢰도 향상.
 
-## React Compiler
+## 🛠️ 기술 스택 (Tech Stack)
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+| 구분 | 기술 | 설명 |
+| :--- | :--- | :--- |
+| **Frontend Framework** | **React** (with Hooks) | 상태 관리 및 컴포넌트 기반 UI 구성 |
+| **Build Tool** | **Vite** | 빠르고 효율적인 개발 환경 및 번들링 |
+| **Language** | **TypeScript** | 안정성과 유지보수성을 위한 정적 타입 지원 |
+| **Styling** | **Tailwind CSS** | 유틸리티 기반의 빠르고 일관된 스타일링 |
+| **Package Manager** | **Yarn Berry (v4)** | PnP(Plug and Play)를 활용한 의존성 관리 |
 
-## Expanding the ESLint configuration
+## 🚀 시작하는 방법 (Getting Started)
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+로컬 환경에서 개발 서버를 실행하고 프로젝트를 배포하는 방법을 안내합니다.
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+### 1. 프로젝트 복제
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+```bash
+git clone [https://github.com/yoonho-co-kr/mbti-recommend-app.git](https://github.com/yoonho-co-kr/mbti-recommend-app.git)
+cd mbti-recommend-app
+````
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+### 2\. 의존성 설치
+
+Yarn Berry PnP 환경이므로, `node_modules` 없이 간결하게 의존성을 설치합니다.
+
+```bash
+# Corepack이 활성화되어 있어야 합니다. (nvm 사용 시 npm install -g corepack)
+yarn install
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### 3\. 개발 서버 실행
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+yarn dev
 ```
-# mbti-recommend-app
+
+> 서버가 시작되면 일반적으로 `http://localhost:5173`과 같은 주소로 접속할 수 있습니다.
+
+### 4\. 프로젝트 빌드
+
+프로덕션 배포를 위한 최적화된 파일을 생성합니다. 결과물은 `dist` 폴더에 저장됩니다.
+
+```bash
+yarn build
+```
+
+## 🌐 배포 (Deployment)
+
+이 프로젝트는 GitHub Pages를 통해 배포됩니다.
+
+**배포 URL:** [https://yoonho-co-kr.github.io/mbti-recommend-app/](https://yoonho-co-kr.github.io/mbti-recommend-app/)
+
+### GitHub Pages 배포 명령
+
+```bash
+# 빌드된 파일을 'gh-pages' 브랜치로 푸시하여 배포
+yarn deploy
+```
+
+## 📁 폴더 구조
+
+프로젝트의 핵심 폴더 구조입니다.
+
+```
+src/
+├── assets/         # 로고, 이미지 등
+├── components/     # 재사용 가능한 UI 컴포넌트 (Header 등)
+├── pages/          # 앱의 라우팅 페이지 (Home, Test, Result)
+├── data/           # MBTI 질문 및 결과 데이터 (questions.js, results.js)
+├── hooks/          # 커스텀 Hook (useMbtiTest.ts)
+├── styles/         # 전역 스타일
+└── App.tsx         # 메인 라우팅 및 상태 관리 컴포넌트
+```
+
+````
+
+---
+
+README 파일 수정 후, 다음 단계인 **기능 확장 및 디자인 개선**을 계속 진행하시거나, 아니면 **GitHub에 README를 푸시**하시겠어요?
+
+```bash
+git add README.md
+git commit -m "docs: README.md 파일 작성 및 추가"
+git push origin main # 또는 master
+````
