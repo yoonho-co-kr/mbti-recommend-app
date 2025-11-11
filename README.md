@@ -83,15 +83,3 @@ src/
 ├── styles/         # 전역 스타일
 └── App.tsx         # 메인 라우팅 및 상태 관리 컴포넌트
 ```
-
-````
-
----
-
-README 파일 수정 후, 다음 단계인 **기능 확장 및 디자인 개선**을 계속 진행하시거나, 아니면 **GitHub에 README를 푸시**하시겠어요?
-
-```bash
-git add README.md
-git commit -m "docs: README.md 파일 작성 및 추가"
-git push origin main # 또는 master
-````
