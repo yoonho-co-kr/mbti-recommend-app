@@ -1,6 +1,17 @@
-// src/data/questions.js
+// src/data/questions.ts
 
-export const questions = [
+export interface Answer {
+  text: string;
+  type: 'E' | 'I' | 'S' | 'N' | 'T' | 'F' | 'J' | 'P';
+}
+
+export interface Question {
+  id: number;
+  question: string;
+  answers: Answer[];
+}
+
+export const questions: Question[] = [
   {
     id: 1,
     question: "주말에는 주로 무엇을 하며 시간을 보내시나요?",

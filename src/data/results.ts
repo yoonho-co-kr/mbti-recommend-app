@@ -1,6 +1,16 @@
-// src/data/results.js
+// src/data/results.ts
 
-export const results = {
+export interface MBTIResult {
+  name: string;
+  description: string;
+  recommendation: string;
+  characteristics: string[];
+  famous_figures: string[];
+  best_environments: string[];
+  growth_tips: string[];
+}
+
+export const results: { [key: string]: MBTIResult } = {
   "ISTJ": {
     name: "청렴결백한 논리주의자",
     description: "사실에 근거하여 사고하며, 책임감이 강하고 현실적인 성격입니다.",

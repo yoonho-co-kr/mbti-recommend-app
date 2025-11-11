@@ -1,7 +1,7 @@
 // src/pages/QuestionPage.tsx
 import  { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import questions from '../data/questions';
+import { questions } from '../data/questions';
 
 function QuestionPage() {
   const { id } = useParams();
