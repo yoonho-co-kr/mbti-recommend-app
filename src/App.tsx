@@ -4,6 +4,7 @@ import Home from './pages/Home';
 import Test from './pages/Test';
 import Result from './pages/Result';
 import { useMbtiTest } from './hooks/useMbtiTest'; // 👈 Hook import
+import Header from './components/Header'; // 👈 Header import
 
 // 앱의 상태 정의: 'home', 'test', 'result' 중 하나
 type AppStage = 'home' | 'test' | 'result';
@@ -29,14 +30,11 @@ function App() {
     setStage('test');
   }, [resetTest]);
 
-  // 테스트 완료 핸들러
+// 테스트 완료 핸들러
   const handleFinish = useCallback(() => {
     calculateMbti(); // 결과 계산
-    // 상태 업데이트가 비동기적으로 이루어지므로, 다음 렌더링 사이클에서 결과 페이지로 이동
-    // setStage('result')를 바로 호출하면 Test 컴포넌트가 언마운트되면서 문제가 발생할 수 있습니다.
-    setTimeout(() => {
-      setStage('result');
-    }, 50); // 짧은 딜레이로 결과 계산 완료를 보장
+    setStage('result'); // 바로 결과 페이지로 이동 요청
+    // 이전에 추가했던 setTimeout은 제거합니다.
   }, [calculateMbti]);
 
   // 테스트 재시작 핸들러
@@ -77,8 +75,15 @@ function App() {
 
   return (
     <div className="min-h-screen bg-gray-100 flex items-center justify-center p-4">
-      <div className="w-full max-w-xl p-8 bg-white shadow-xl rounded-2xl">
-        {renderStage()}
+      {/* 컨테이너 크기 및 모양 변경 */}
+      <div className="w-full max-w-xl bg-white shadow-2xl rounded-2xl overflow-hidden">
+
+        {/* Header 컴포넌트 적용 */}
+        <Header />
+
+        <div className="p-8"> {/* 기존 컨테이너의 패딩을 이 div로 이동 */}
+          {renderStage()}
+        </div>
       </div>
     </div>
   );
