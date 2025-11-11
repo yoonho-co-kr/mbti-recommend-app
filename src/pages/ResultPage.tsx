@@ -1,11 +1,17 @@
 // src/pages/ResultPage.tsx
-import React from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link, useNavigate } from 'react-router-dom';
 import { results } from '../data/results';
 
 function ResultPage() {
-  const { type } = useParams();
-  const result = results[type];
+  const { type } = useParams<{ type?: string }>();
+  const navigate = useNavigate();
+  const result = type ? results[type] : null;
+
+  // Redirect to home if type is invalid or missing
+  if (!result) {
+    navigate('/');
+    return null;
+  }
 
   const handleShareTwitter = () => {
     const text = `제 MBTI는 ${result.name} (${type}) 이고, 추천 직업은 ${result.recommendation} 입니다! #MBTI #직업추천`;
@@ -13,10 +19,6 @@ function ResultPage() {
     const twitterUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`;
     window.open(twitterUrl, '_blank');
   };
-
-  if (!result) {
-    return <div>결과를 찾을 수 없습니다.</div>;
-  }
 
   return (
     <div className="min-h-screen bg-gray-100 flex items-center justify-center p-4">
@@ -30,63 +32,21 @@ function ResultPage() {
           <h2 className="text-2xl font-bold text-indigo-800 mb-3">추천 직업</h2>
           <p className="text-indigo-700 text-xl">{result.recommendation}</p>
         </div>
-
-        {result.characteristics && (
-          <div className="bg-gray-50 p-6 rounded-lg mb-6 text-left">
-            <h3 className="text-xl font-bold text-gray-800 mb-3">주요 특징</h3>
-            <ul className="list-disc list-inside text-gray-700">
-              {result.characteristics.map((char, index) => (
-                <li key={index}>{char}</li>
-              ))}
-            </ul>
-          </div>
-        )}
-
-        {result.famous_figures && (
-          <div className="bg-gray-50 p-6 rounded-lg mb-6 text-left">
-            <h3 className="text-xl font-bold text-gray-800 mb-3">유명 인물</h3>
-            <ul className="list-disc list-inside text-gray-700">
-              {result.famous_figures.map((figure, index) => (
-                <li key={index}>{figure}</li>
-              ))}
-            </ul>
-          </div>
-        )}
-
-        {result.best_environments && (
-          <div className="bg-gray-50 p-6 rounded-lg mb-6 text-left">
-            <h3 className="text-xl font-bold text-gray-800 mb-3">이상적인 환경</h3>
-            <ul className="list-disc list-inside text-gray-700">
-              {result.best_environments.map((env, index) => (
-                <li key={index}>{env}</li>
-              ))}
-            </ul>
-          </div>
-        )}
-
-        {result.growth_tips && (
-          <div className="bg-gray-50 p-6 rounded-lg mb-6 text-left">
-            <h3 className="text-xl font-bold text-gray-800 mb-3">성장 팁</h3>
-            <ul className="list-disc list-inside text-gray-700">
-              {result.growth_tips.map((tip, index) => (
-                <li key={index}>{tip}</li>
-              ))}
-            </ul>
-          </div>
-        )}
-
-        <button
-          onClick={handleShareTwitter}
-          className="mt-8 w-full bg-blue-400 hover:bg-blue-500 text-white font-semibold py-3 rounded-lg transition duration-150"
-        >
-          Twitter에 결과 공유하기
-        </button>
-
-        <Link to="/">
-          <button className="mt-4 w-full bg-indigo-500 hover:bg-indigo-600 text-white font-semibold py-3 rounded-lg transition duration-150">
-            테스트 다시하기
+        
+        <div className="flex flex-col space-y-4">
+          <button
+            onClick={handleShareTwitter}
+            className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-6 rounded-lg transition-colors"
+          >
+            트위터로 공유하기
           </button>
-        </Link>
+          <Link
+            to="/"
+            className="bg-indigo-100 hover:bg-indigo-200 text-indigo-700 font-medium py-3 px-6 rounded-lg transition-colors text-center"
+          >
+            다시 테스트하기
+          </Link>
+        </div>
       </div>
     </div>
   );

@@ -1,12 +1,12 @@
 // src/pages/QuestionPage.tsx
-import React, { useState, useEffect } from 'react';
+import  { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { questions } from '../data/questions';
+import questions from '../data/questions';
 
 function QuestionPage() {
   const { id } = useParams();
   const navigate = useNavigate();
-  const questionId = parseInt(id, 10);
+  const questionId = parseInt(id || '1', 10);
   const question = questions.find(q => q.id === questionId);
 
   const [scores, setScores] = useState(() => {
@@ -24,10 +24,10 @@ function QuestionPage() {
     sessionStorage.setItem('userAnswers', JSON.stringify(userAnswers));
   }, [scores, userAnswers]);
 
-  const handleAnswer = (type) => {
+  const handleAnswer = (type: 'E' | 'I' | 'S' | 'N' | 'T' | 'F' | 'J' | 'P') => {
     const newScores = { ...scores, [type]: scores[type] + 1 };
     setScores(newScores);
-    setUserAnswers(prev => ({ ...prev, [questionId]: type }));
+    setUserAnswers((prev: { [key: number]: 'E' | 'I' | 'S' | 'N' | 'T' | 'F' | 'J' | 'P' }) => ({ ...prev, [questionId]: type }));
 
     if (questionId < questions.length) {
       navigate(`/question/${questionId + 1}`);
