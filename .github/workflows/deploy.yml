@@ -27,15 +27,19 @@ jobs:
           node-version: '20' # LTS 버전 사용 권장
           cache: 'yarn'
 
-      # 3. Yarn Berry 환경 설정 및 의존성 설치
+      # 3. Corepack 활성화 (Yarn Berry 사용을 위해)
+      - name: Enable Corepack
+        run: corepack enable
+
+      # 4. Yarn Berry 환경 설정 및 의존성 설치
       - name: Install dependencies
         run: yarn install
 
-      # 4. Vite를 이용한 프로젝트 빌드
+      # 5. Vite를 이용한 프로젝트 빌드
       - name: Build project
         run: yarn build
 
-      # 5. GitHub Pages로 배포
+      # 6. GitHub Pages로 배포
       # peaceiris/actions-gh-pages는 GitHub의 내장 PAT를 사용하여 인증 문제를 해결합니다.
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
