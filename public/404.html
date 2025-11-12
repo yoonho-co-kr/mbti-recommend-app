@@ -5,10 +5,9 @@
     <title>Redirecting...</title>
     <script type="text/javascript">
       // Single-page apps need to be served from index.html
-      // This script redirects all 404s to index.html, preserving the path
-      var path = window.location.pathname;
-      var redirect = path.startsWith('/mbti-recommend-app') ? '/mbti-recommend-app/' : '/';
-      window.location.replace(redirect + window.location.search + window.location.hash);
+      // This script redirects all 404s to the base path of the application.
+      // The <base> tag in index.html will then handle the correct routing.
+      window.location.replace(window.location.origin + '/mbti-recommend-app/' + window.location.search + window.location.hash);
     </script>
   </head>
   <body>
