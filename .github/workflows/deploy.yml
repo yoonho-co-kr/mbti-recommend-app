@@ -23,7 +23,7 @@ jobs:
           cache: 'yarn'
 
       # 3. Corepack 활성화 + Yarn 버전 지정
-      - name: Enable Corepack and set Yarn 4.11.0
+      - name: Enable Corepack and use correct Yarn version
         run: |
           corepack enable
           corepack prepare yarn@4.11.0 --activate
