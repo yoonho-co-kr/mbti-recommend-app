@@ -1,9 +1,14 @@
+# .github/workflows/deploy.yml
+
 name: Deploy to GitHub Pages
 
 on:
+  # 'main' 또는 'master' 브랜치에 푸시가 발생할 때 이 워크플로우를 실행합니다.
   push:
     branches:
-      - main  # 또는 master 브랜치를 사용 중이면 변경
+      - main  # 또는 master 브랜치를 사용한다면 'master'로 변경
+
+  # GitHub Actions 탭에서 수동으로 워크플로우를 실행할 수 있도록 허용
   workflow_dispatch:
 
 jobs:
@@ -15,31 +20,27 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v4
 
-      # 2. Node.js 환경 설정
+      # 2. Node.js 환경 설정 (Vite 빌드를 위해)
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: '20' # LTS 버전 사용 권장
           cache: 'yarn'
 
-      # 3. Corepack 활성화 + Yarn 버전 지정
-      - name: Enable Corepack and use correct Yarn version
-        run: |
-          corepack enable
-          corepack prepare yarn@4.11.0 --activate
-
-      # 4. 의존성 설치 (이제 Yarn 4.11.0으로 실행)
+      # 3. 의존성 설치 (Corepack 활성화 포함)
       - name: Install dependencies
-        run: yarn install --immutable
+        run: corepack enable && yarn install
 
-      # 5. 빌드
+      # 4. Vite를 이용한 프로젝트 빌드
       - name: Build project
         run: yarn build
 
-      # 6. GitHub Pages 배포
+      # 5. GitHub Pages로 배포
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./dist
           publish_branch: gh-pages
+          user_name: 'github-actions[bot]'
+          user_email: 'github-actions[bot]@users.noreply.github.com'
