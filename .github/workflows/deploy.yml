@@ -1,14 +1,9 @@
-# .github/workflows/deploy.yml
-
 name: Deploy to GitHub Pages
 
 on:
-  # 'main' 또는 'master' 브랜치에 푸시가 발생할 때 이 워크플로우를 실행합니다.
   push:
     branches:
-      - main  # 또는 master 브랜치를 사용한다면 'master'로 변경
-
-  # GitHub Actions 탭에서 수동으로 워크플로우를 실행할 수 있도록 허용
+      - main  # 또는 master 브랜치를 사용 중이면 변경
   workflow_dispatch:
 
 jobs:
@@ -27,19 +22,21 @@ jobs:
           node-version: '20'
           cache: 'yarn'
 
-      # 💡 핵심 추가: Corepack을 활성화하여 Yarn v4 사용을 보장
-      - name: Enable Corepack
-        run: corepack enable
+      # 3. Corepack 활성화 + Yarn 버전 지정
+      - name: Enable Corepack and set Yarn 4.11.0
+        run: |
+          corepack enable
+          corepack prepare yarn@4.11.0 --activate
 
-      # 3. 의존성 설치 (이제 Yarn v4로 실행됨)
+      # 4. 의존성 설치 (이제 Yarn 4.11.0으로 실행)
       - name: Install dependencies
-        run: yarn install
+        run: yarn install --immutable
 
-      # 4. 프로젝트 빌드
+      # 5. 빌드
       - name: Build project
         run: yarn build
 
-      # 5. GitHub Pages로 배포
+      # 6. GitHub Pages 배포
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
