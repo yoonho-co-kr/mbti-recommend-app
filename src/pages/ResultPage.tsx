@@ -2,7 +2,8 @@
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import { results } from '../data/results';
 import { mbtiStatistics } from '../data/mbtiStatistics'; // Import statistics
-import { Button } from '@/components/ui/button'; // Import the Button component
+import { Button } from '@/components/ui/button';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'; // Import shadcn/ui Card components
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 declare const Kakao: any; // Kakao SDK is a global object, typing it fully is beyond the scope of this task.
@@ -108,69 +109,73 @@ function ResultPage() {
 
   return (
     <div className="min-h-screen bg-gray-100 flex items-center justify-center p-4">
-      <div className="w-full max-w-xl p-8 bg-white shadow-xl rounded-lg text-center">
-        <p className="text-xl font-semibold text-indigo-500 mb-2">당신의 유형은</p>
-        <h2 className="text-5xl font-extrabold text-indigo-700 mb-4">{type}</h2>
-        <h1 className="text-4xl font-bold text-indigo-600 mb-4">{result.name}</h1>
-        <p className="text-gray-700 text-lg mb-6">{result.description}</p>
-        
-        <div className="bg-indigo-50 p-6 rounded-lg mb-6">
-          <h2 className="text-2xl font-bold text-indigo-800 mb-3">추천 직업</h2>
-          <p className="text-indigo-700 text-xl">{result.recommendation}</p>
-        </div>
-
-        {finalScores && (
-          <div className="bg-gray-50 p-6 rounded-lg mb-6 text-left">
-            <h2 className="text-2xl font-bold text-gray-800 mb-3">왜 이 MBTI가 나왔을까요?</h2>
-            <p className="text-gray-700 whitespace-pre-wrap">{mbtiExplanation}</p>
+      <Card className="w-full max-w-xl p-8 text-center"> {/* Use shadcn/ui Card */}
+        <CardHeader>
+          <p className="text-xl font-semibold text-indigo-500 mb-2">당신의 유형은</p>
+          <CardTitle className="text-5xl font-extrabold text-indigo-700 mb-4">{type}</CardTitle>
+          <h1 className="text-4xl font-bold text-indigo-600 mb-4">{result.name}</h1>
+        </CardHeader>
+        <CardContent>
+          <p className="text-gray-700 text-lg mb-6">{result.description}</p>
+          
+          <div className="bg-indigo-50 p-6 rounded-lg mb-6">
+            <h2 className="text-2xl font-bold text-indigo-800 mb-3">추천 직업</h2>
+            <p className="text-indigo-700 text-xl">{result.recommendation}</p>
           </div>
-        )}
 
-        {userMbtiStat && (
-          <div className="bg-blue-50 p-6 rounded-lg mb-6 text-left">
-            <h2 className="text-2xl font-bold text-blue-800 mb-3">MBTI 유형 통계</h2>
-            <p className="text-blue-700">
-              당신의 MBTI 유형인 <span className="font-bold">{userMbtiStat.type}</span>는 전체 인구의 약 <span className="font-bold">{userMbtiStat.percentage}%</span>를 차지합니다.
-            </p>
-            <p className="text-blue-700 mt-2">
-              이는 {userMbtiStat.percentage > 10 ? "비교적 흔한 유형" : userMbtiStat.percentage > 5 ? "평균적인 유형" : "희귀한 유형"}에 속합니다.
-            </p>
+          {finalScores && (
+            <div className="bg-gray-50 p-6 rounded-lg mb-6 text-left">
+              <h2 className="text-2xl font-bold text-gray-800 mb-3">왜 이 MBTI가 나왔을까요?</h2>
+              <p className="text-gray-700 whitespace-pre-wrap">{mbtiExplanation}</p>
+            </div>
+          )}
+
+          {userMbtiStat && (
+            <div className="bg-blue-50 p-6 rounded-lg mb-6 text-left">
+              <h2 className="text-2xl font-bold text-blue-800 mb-3">MBTI 유형 통계</h2>
+              <p className="text-blue-700">
+                당신의 MBTI 유형인 <span className="font-bold">{userMbtiStat.type}</span>는 전체 인구의 약 <span className="font-bold">{userMbtiStat.percentage}%</span>를 차지합니다.
+              </p>
+              <p className="text-blue-700 mt-2">
+                이는 {userMbtiStat.percentage > 10 ? "비교적 흔한 유형" : userMbtiStat.percentage > 5 ? "평균적인 유형" : "희귀한 유형"}에 속합니다.
+              </p>
+            </div>
+          )}
+          
+          <div className="flex flex-col space-y-4">
+            <Button
+              onClick={handleShareTwitter}
+              className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-6 rounded-lg transition-colors"
+            >
+              트위터로 공유하기
+            </Button>
+            <Button
+              onClick={handleShareKakao}
+              className="bg-yellow-400 hover:bg-yellow-500 text-gray-800 font-bold py-3 px-6 rounded-lg transition-colors"
+            >
+              카카오톡으로 공유하기
+            </Button>
+            <Button
+              onClick={handleShareFacebook}
+              className="bg-blue-700 hover:bg-blue-800 text-white font-bold py-3 px-6 rounded-lg transition-colors"
+            >
+              페이스북으로 공유하기
+            </Button>
+            <Button
+              onClick={handleCopyLink}
+              className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-3 px-6 rounded-lg transition-colors"
+            >
+              링크 복사하기
+            </Button>
+            <Link
+              to="/"
+              className="bg-indigo-100 hover:bg-indigo-200 text-indigo-700 font-medium py-3 px-6 rounded-lg transition-colors text-center"
+            >
+              다시 테스트하기
+            </Link>
           </div>
-        )}
-        
-        <div className="flex flex-col space-y-4">
-          <Button
-            onClick={handleShareTwitter}
-            className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-6 rounded-lg transition-colors"
-          >
-            트위터로 공유하기
-          </Button>
-          <Button
-            onClick={handleShareKakao}
-            className="bg-yellow-400 hover:bg-yellow-500 text-gray-800 font-bold py-3 px-6 rounded-lg transition-colors"
-          >
-            카카오톡으로 공유하기
-          </Button>
-          <Button
-            onClick={handleShareFacebook}
-            className="bg-blue-700 hover:bg-blue-800 text-white font-bold py-3 px-6 rounded-lg transition-colors"
-          >
-            페이스북으로 공유하기
-          </Button>
-          <Button
-            onClick={handleCopyLink}
-            className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-3 px-6 rounded-lg transition-colors"
-          >
-            링크 복사하기
-          </Button>
-          <Link
-            to="/"
-            className="bg-indigo-100 hover:bg-indigo-200 text-indigo-700 font-medium py-3 px-6 rounded-lg transition-colors text-center"
-          >
-            다시 테스트하기
-          </Link>
-        </div>
-      </div>
+        </CardContent>
+      </Card>
     </div>
   );
 }
