@@ -17,8 +17,10 @@ function HomePage() {
             onClick={() => {
               const confirmRestart = window.confirm("테스트를 다시 시작하시겠습니까? 기존 진행 상황은 초기화됩니다.");
               if (confirmRestart) {
-                sessionStorage.removeItem('mbtiScores');
-                sessionStorage.removeItem('userAnswers');
+                localStorage.removeItem('mbtiScores');
+                localStorage.removeItem('userAnswers');
+                localStorage.removeItem('finalScores'); // Also clear final scores
+                localStorage.removeItem('finalUserAnswers'); // Also clear final user answers
               }
             }}
           >

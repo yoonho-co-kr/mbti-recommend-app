@@ -1,51 +1,63 @@
 // src/pages/QuestionPage.tsx
-import  { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { questions } from '../data/questions';
+import { calculateMbtiType, shuffleArray } from '../utils/mbtiUtils';
+// import { Question } from '../data/questions'; // Question interface is not directly used here
 
 function QuestionPage() {
   const { id } = useParams();
   const navigate = useNavigate();
-  const questionId = parseInt(id || '1', 10);
-  const question = questions.find(q => q.id === questionId);
+  const currentQuestionIndex = parseInt(id || '1', 10) - 1; // 0-indexed
+
+  const [shuffledQuestionIds] = useState<number[]>(() => { // setShuffledQuestionIds is not used after initial setup
+    const savedShuffledIds = localStorage.getItem('shuffledQuestionIds');
+    if (savedShuffledIds) {
+      return JSON.parse(savedShuffledIds);
+    }
+    const initialShuffledIds = shuffleArray(questions.map(q => q.id));
+    localStorage.setItem('shuffledQuestionIds', JSON.stringify(initialShuffledIds));
+    return initialShuffledIds;
+  });
+
+  const currentQuestionId = shuffledQuestionIds[currentQuestionIndex];
+  const question = questions.find(q => q.id === currentQuestionId);
 
   const [scores, setScores] = useState(() => {
-    const savedScores = sessionStorage.getItem('mbtiScores');
+    const savedScores = localStorage.getItem('mbtiScores');
     return savedScores ? JSON.parse(savedScores) : { E: 0, I: 0, S: 0, N: 0, T: 0, F: 0, J: 0, P: 0 };
   });
 
   const [userAnswers, setUserAnswers] = useState(() => {
-    const savedAnswers = sessionStorage.getItem('userAnswers');
+    const savedAnswers = localStorage.getItem('userAnswers');
     return savedAnswers ? JSON.parse(savedAnswers) : {};
   });
 
   useEffect(() => {
-    sessionStorage.setItem('mbtiScores', JSON.stringify(scores));
-    sessionStorage.setItem('userAnswers', JSON.stringify(userAnswers));
+    localStorage.setItem('mbtiScores', JSON.stringify(scores));
+    localStorage.setItem('userAnswers', JSON.stringify(userAnswers));
   }, [scores, userAnswers]);
 
   const handleAnswer = (type: 'E' | 'I' | 'S' | 'N' | 'T' | 'F' | 'J' | 'P') => {
     const newScores = { ...scores, [type]: scores[type] + 1 };
     setScores(newScores);
-    setUserAnswers((prev: { [key: number]: 'E' | 'I' | 'S' | 'N' | 'T' | 'F' | 'J' | 'P' }) => ({ ...prev, [questionId]: type }));
+    setUserAnswers((prev: { [key: number]: 'E' | 'I' | 'S' | 'N' | 'T' | 'F' | 'J' | 'P' }) => ({ ...prev, [currentQuestionId]: type }));
 
-    if (questionId < questions.length) {
-      navigate(`/question/${questionId + 1}`);
+    if (currentQuestionIndex < questions.length - 1) {
+      navigate(`/question/${currentQuestionIndex + 2}`);
     } else {
-      // Calculate MBTI type
-      let mbtiType = "";
-      mbtiType += newScores.E > newScores.I ? "E" : "I";
-      mbtiType += newScores.S > newScores.N ? "S" : "N";
-      mbtiType += newScores.T > newScores.F ? "T" : "F";
-      mbtiType += newScores.J > newScores.P ? "J" : "P";
+      const mbtiType = calculateMbtiType(newScores);
+      localStorage.setItem('finalScores', JSON.stringify(newScores));
+      localStorage.setItem('finalUserAnswers', JSON.stringify(userAnswers));
       navigate(`/result/${mbtiType}`);
     }
   };
 
   const handlePrevious = () => {
-    if (questionId > 1) {
-      const previousQuestionId = questionId - 1;
-      const previousAnswerType = userAnswers[previousQuestionId];
+    if (currentQuestionIndex > 0) {
+      const previousQuestionIndex = currentQuestionIndex - 1;
+      const previousQuestionActualId = shuffledQuestionIds[previousQuestionIndex];
+      const previousAnswerType = userAnswers[previousQuestionActualId];
 
       if (previousAnswerType) {
         const newScores = { ...scores, [previousAnswerType]: scores[previousAnswerType] - 1 };
@@ -53,10 +65,10 @@ function QuestionPage() {
       }
 
       const newAnswers = { ...userAnswers };
-      delete newAnswers[questionId]; // Remove current question's answer
+      delete newAnswers[currentQuestionId]; // Remove current question's answer
       setUserAnswers(newAnswers);
 
-      navigate(`/question/${previousQuestionId}`);
+      navigate(`/question/${currentQuestionIndex}`);
     }
   };
 
@@ -64,7 +76,7 @@ function QuestionPage() {
     return <div>잘못된 접근입니다.</div>;
   }
 
-  const progress = (questionId / questions.length) * 100;
+  const progress = ((currentQuestionIndex + 1) / questions.length) * 100;
 
   return (
     <div className="min-h-screen bg-gray-100 flex items-center justify-center p-4">
@@ -73,10 +85,10 @@ function QuestionPage() {
           <div className="w-full bg-gray-200 rounded-full h-2.5">
             <div className="bg-indigo-600 h-2.5 rounded-full" style={{ width: `${progress}%` }}></div>
           </div>
-          <p className="text-center text-sm text-gray-600 mt-2">{questionId} / {questions.length}</p>
+          <p className="text-center text-sm text-gray-600 mt-2">{currentQuestionIndex + 1} / {questions.length}</p>
         </div>
         <div className="text-center mb-8">
-          <p className="text-2xl font-bold text-indigo-600">Q{question.id}</p>
+          <p className="text-2xl font-bold text-indigo-600">Q{currentQuestionIndex + 1}</p>
           <h2 className="text-xl text-gray-800 mt-2">{question.question}</h2>
         </div>
         <div className="space-y-4">
@@ -89,7 +101,7 @@ function QuestionPage() {
               {answer.text}
             </button>
           ))}
-          {questionId > 1 && (
+          {currentQuestionIndex > 0 && (
             <button
               onClick={handlePrevious}
               className="w-full bg-gray-300 hover:bg-gray-400 text-gray-800 font-semibold py-4 rounded-lg transition duration-150 mt-4"
