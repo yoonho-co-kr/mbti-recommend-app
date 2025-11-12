@@ -20,32 +20,29 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v4
 
-      # 2. Node.js 환경 설정 (Vite 빌드를 위해)
+      # 2. Node.js 환경 설정
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20' # LTS 버전 사용 권장
+          node-version: '20'
           cache: 'yarn'
 
-      # 3. 의존성 설치 (Corepack 활성화 포함)
-      - name: Install dependencies
-        run: corepack enable && yarn install
+      # 💡 핵심 추가: Corepack을 활성화하여 Yarn v4 사용을 보장
+      - name: Enable Corepack
+        run: corepack enable
 
-      # 4. Vite를 이용한 프로젝트 빌드
+      # 3. 의존성 설치 (이제 Yarn v4로 실행됨)
+      - name: Install dependencies
+        run: yarn install
+
+      # 4. 프로젝트 빌드
       - name: Build project
         run: yarn build
 
       # 5. GitHub Pages로 배포
-      # peaceiris/actions-gh-pages는 GitHub의 내장 PAT를 사용하여 인증 문제를 해결합니다.
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
-          # GitHub Actions가 제공하는 내장 PAT를 사용합니다. (인증 문제 해결)
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          # 빌드 결과물 폴더 (Vite의 기본 빌드 폴더)
           publish_dir: ./dist
-          # 배포할 브랜치 설정 (이 브랜치를 GitHub Pages Source로 설정해야 함)
           publish_branch: gh-pages
-          # 커밋을 생성할 사용자 정보
-          user_name: 'github-actions[bot]'
-          user_email: 'github-actions[bot]@users.noreply.github.com'
