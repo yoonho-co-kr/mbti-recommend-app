@@ -1,11 +1,9 @@
 // src/pages/QuestionPage.tsx
+// src/pages/QuestionPage.tsx
 import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { questions } from '../data/questions';
 import { calculateMbtiType, shuffleArray } from '../utils/mbtiUtils';
-import { Button } from '@/components/ui/button';
-import { Progress } from '@/components/ui/progress';
-import { Card, CardContent, CardHeader } from '@/components/ui/card'; // Import shadcn/ui Card components // Import shadcn/ui Button
 // import { Question } from '../data/questions'; // Question interface is not directly used here
 
 function QuestionPage() {
@@ -83,39 +81,40 @@ function QuestionPage() {
 
   return (
     <div className="min-h-screen bg-gray-100 flex items-center justify-center p-4">
-      <Card className="w-full max-w-xl p-8"> {/* Use shadcn/ui Card */}
-        <CardHeader>
-          <div className="mb-4">
-            <Progress value={progress} className="w-full" />
-            <p className="text-center text-sm text-gray-600 mt-2">{currentQuestionIndex + 1} / {questions.length}</p>
+      <div className="w-full max-w-xl p-8 bg-white shadow-xl rounded-lg">
+        <div className="mb-4">
+          <div className="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700">
+            <div
+              className="bg-indigo-600 h-2.5 rounded-full"
+              style={{ width: `${progress}%` }}
+            ></div>
           </div>
-          <div className="text-center mb-8">
-            <p className="text-2xl font-bold text-indigo-600">Q{currentQuestionIndex + 1}</p>
-            <h2 className="text-xl text-gray-800 mt-2">{question.question}</h2>
-          </div>
-        </CardHeader>
-        <CardContent>
-          <div className="space-y-4">
-            {question.answers.map((answer, index) => (
-              <Button
-                key={index}
-                onClick={() => handleAnswer(answer.type)}
-                className="w-full bg-indigo-100 hover:bg-indigo-200 text-indigo-800 font-semibold py-4 rounded-lg transition duration-150"
-              >
-                {answer.text}
-              </Button>
-            ))}
-            {currentQuestionIndex > 0 && (
-              <Button
-                onClick={handlePrevious}
-                className="w-full bg-gray-300 hover:bg-gray-400 text-gray-800 font-semibold py-4 rounded-lg transition duration-150 mt-4"
-              >
-                이전 질문
-              </Button>
-            )}
-          </div>
-        </CardContent>
-      </Card>
+          <p className="text-center text-sm text-gray-600 mt-2">{currentQuestionIndex + 1} / {questions.length}</p>
+        </div>
+        <div className="text-center mb-8">
+          <p className="text-2xl font-bold text-indigo-600">Q{currentQuestionIndex + 1}</p>
+          <h2 className="text-xl text-gray-800 mt-2">{question.question}</h2>
+        </div>
+        <div className="space-y-4">
+          {question.answers.map((answer, index) => (
+            <button
+              key={index}
+              onClick={() => handleAnswer(answer.type)}
+              className="w-full bg-indigo-100 hover:bg-indigo-200 text-indigo-800 font-semibold py-4 rounded-lg transition duration-150"
+            >
+              {answer.text}
+            </button>
+          ))}
+          {currentQuestionIndex > 0 && (
+            <button
+              onClick={handlePrevious}
+              className="w-full bg-gray-300 hover:bg-gray-400 text-gray-800 font-semibold py-4 rounded-lg transition duration-150 mt-4"
+            >
+              이전 질문
+            </button>
+          )}
+        </div>
+      </div>
     </div>
   );
 }

@@ -1,15 +1,9 @@
 // vite.config.js
 
 import { defineConfig } from 'vite';
-import react from '@vitejs/plugin-react';
-import path from 'path'; // Import path module
 
-// https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [react()],
-  resolve: {
-    alias: {
-      "@": path.resolve(__dirname, "./src"),
-    },
-  },
+  // base: `/${REPO_NAME}/`, // This setting is typically for subpath deployments like GitHub Pages.
+  // For Vercel, the base path is usually '/' or omitted entirely.
+  // ...
 });
