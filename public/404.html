@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Redirecting...</title>
+    <script type="text/javascript">
+      // Single-page apps need to be served from index.html
+      // This script redirects all 404s to index.html, preserving the path
+      var path = window.location.pathname;
+      var redirect = path.startsWith('/mbti-recommend-app') ? '/mbti-recommend-app/' : '/';
+      window.location.replace(redirect + window.location.search + window.location.hash);
+    </script>
+  </head>
+  <body>
+  </body>
+</html>
