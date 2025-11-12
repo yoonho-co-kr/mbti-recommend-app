@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { questions } from '../data/questions';
 import { calculateMbtiType, shuffleArray } from '../utils/mbtiUtils';
+import { Button } from '@/components/ui/button'; // Import shadcn/ui Button
 // import { Question } from '../data/questions'; // Question interface is not directly used here
 
 function QuestionPage() {
@@ -93,21 +94,21 @@ function QuestionPage() {
         </div>
         <div className="space-y-4">
           {question.answers.map((answer, index) => (
-            <button
+            <Button
               key={index}
               onClick={() => handleAnswer(answer.type)}
               className="w-full bg-indigo-100 hover:bg-indigo-200 text-indigo-800 font-semibold py-4 rounded-lg transition duration-150"
             >
               {answer.text}
-            </button>
+            </Button>
           ))}
           {currentQuestionIndex > 0 && (
-            <button
+            <Button
               onClick={handlePrevious}
               className="w-full bg-gray-300 hover:bg-gray-400 text-gray-800 font-semibold py-4 rounded-lg transition duration-150 mt-4"
             >
               이전 질문
-            </button>
+            </Button>
           )}
         </div>
       </div>

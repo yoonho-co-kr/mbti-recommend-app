@@ -42,6 +42,12 @@ export default defineConfig([
     },
   },
   {
+    files: ['src/components/ui/**/*.{ts,tsx}'], // New entry to specifically target shadcn/ui components
+    rules: {
+      'react-refresh/only-export-components': 'off', // Turn off the rule for shadcn/ui files
+    },
+  },
+  {
     files: ['eslint.config.js'],
     languageOptions: {
       globals: globals.node,

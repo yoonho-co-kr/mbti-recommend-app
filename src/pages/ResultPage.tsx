@@ -2,6 +2,7 @@
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import { results } from '../data/results';
 import { mbtiStatistics } from '../data/mbtiStatistics'; // Import statistics
+import { Button } from '@/components/ui/button'; // Import the Button component
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 declare const Kakao: any; // Kakao SDK is a global object, typing it fully is beyond the scope of this task.
@@ -138,30 +139,30 @@ function ResultPage() {
         )}
         
         <div className="flex flex-col space-y-4">
-          <button
+          <Button
             onClick={handleShareTwitter}
             className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-6 rounded-lg transition-colors"
           >
             트위터로 공유하기
-          </button>
-          <button
+          </Button>
+          <Button
             onClick={handleShareKakao}
             className="bg-yellow-400 hover:bg-yellow-500 text-gray-800 font-bold py-3 px-6 rounded-lg transition-colors"
           >
             카카오톡으로 공유하기
-          </button>
-          <button
+          </Button>
+          <Button
             onClick={handleShareFacebook}
             className="bg-blue-700 hover:bg-blue-800 text-white font-bold py-3 px-6 rounded-lg transition-colors"
           >
             페이스북으로 공유하기
-          </button>
-          <button
+          </Button>
+          <Button
             onClick={handleCopyLink}
             className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-3 px-6 rounded-lg transition-colors"
           >
             링크 복사하기
-          </button>
+          </Button>
           <Link
             to="/"
             className="bg-indigo-100 hover:bg-indigo-200 text-indigo-700 font-medium py-3 px-6 rounded-lg transition-colors text-center"

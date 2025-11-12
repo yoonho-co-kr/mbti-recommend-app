@@ -18,6 +18,12 @@
     "isolatedModules": true,
     "noEmit": true,
 
+    /* Paths for shadcn/ui */
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"]
+    },
+
     /* Linting */
     "strict": true,
     "noUnusedLocals": true,
