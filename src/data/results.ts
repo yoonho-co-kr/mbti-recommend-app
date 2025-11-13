@@ -1,158 +1,158 @@
 // src/data/results.ts
 
 export interface MBTIResult {
-  name: string;
-  description: string;
-  recommendation: string;
-  characteristics: string[];
-  famous_figures: string[];
-  best_environments: string[];
-  growth_tips: string[];
+  nameKey: string;
+  descriptionKey: string;
+  recommendationKey: string;
+  characteristicsKeys: string[];
+  famousFiguresKeys: string[];
+  bestEnvironmentsKeys: string[];
+  growthTipsKeys: string[];
 }
 
 export const results: { [key: string]: MBTIResult } = {
   "ISTJ": {
-    name: "The Duty Fulfiller",
-    description: "You think based on facts, are highly responsible, and realistic.",
-    recommendation: "Accounting, Data Analysis, Engineering",
-    characteristics: ["Cautious and realistic", "Strong sense of responsibility", "Well-organized", "Values principles"],
-    famous_figures: ["George Washington", "Angela Merkel", "Warren Buffett"],
-    best_environments: ["Systematic and stable environments", "Places with clear rules and procedures", "Roles where accuracy and detail are important"],
-    growth_tips: ["Be open to new ideas.", "Practice expressing your emotions.", "Sometimes enjoy spontaneous experiences without a plan."]
+    nameKey: "ISTJ_name",
+    descriptionKey: "ISTJ_description",
+    recommendationKey: "ISTJ_recommendation",
+    characteristicsKeys: ["ISTJ_characteristics_1", "ISTJ_characteristics_2", "ISTJ_characteristics_3", "ISTJ_characteristics_4"],
+    famousFiguresKeys: ["ISTJ_famous_figures_1", "ISTJ_famous_figures_2", "ISTJ_famous_figures_3"],
+    bestEnvironmentsKeys: ["ISTJ_best_environments_1", "ISTJ_best_environments_2", "ISTJ_best_environments_3"],
+    growthTipsKeys: ["ISTJ_growth_tips_1", "ISTJ_growth_tips_2", "ISTJ_growth_tips_3"]
   },
   "ISFJ": {
-    name: "The Protector",
-    description: "Quiet, calm, dedicated, and considerate. You see tasks through to the end.",
-    recommendation: "Nurse, Educator, Administrative Professional",
-    characteristics: ["Warm and dedicated", "Strong sense of responsibility", "Meticulous and observant", "Sensitive to others' feelings"],
-    famous_figures: ["Mother Teresa", "Beyoncé", "Selena Gomez"],
-    best_environments: ["Professions helping people", "Stable and harmonious environments", "Fields requiring meticulous care"],
-    growth_tips: ["Practice prioritizing your own needs and feelings.", "Learn to clearly express your opinions in conflict situations.", "Don't be afraid of new experiences and changes."]
+    nameKey: "ISFJ_name",
+    descriptionKey: "ISFJ_description",
+    recommendationKey: "ISFJ_recommendation",
+    characteristicsKeys: ["ISFJ_characteristics_1", "ISFJ_characteristics_2", "ISFJ_characteristics_3", "ISFJ_characteristics_4"],
+    famousFiguresKeys: ["ISFJ_famous_figures_1", "ISFJ_famous_figures_2", "ISFJ_famous_figures_3"],
+    bestEnvironmentsKeys: ["ISFJ_best_environments_1", "ISFJ_best_environments_2", "ISFJ_best_environments_3"],
+    growthTipsKeys: ["ISFJ_growth_tips_1", "ISFJ_growth_tips_2", "ISFJ_growth_tips_3"]
   },
   "INFJ": {
-    name: "The Advocate",
-    description: "Highly insightful, an idealist who inspires people.",
-    recommendation: "Counselor, Writer, Human Rights Activist",
-    characteristics: ["Insightful and intuitive", "Idealistic", "Helps others grow", "Deep empathy"],
-    famous_figures: ["Martin Luther King Jr.", "Nelson Mandela", "Oprah Winfrey"],
-    best_environments: ["Where meaningful work can be done", "Creative and independent work environments", "Roles that bring out people's potential"],
-    growth_tips: ["Set realistic goals and practice achieving them step by step.", "Take enough time for yourself to recharge your energy.", "Don't try to please everyone."]
+    nameKey: "INFJ_name",
+    descriptionKey: "INFJ_description",
+    recommendationKey: "INFJ_recommendation",
+    characteristicsKeys: ["INFJ_characteristics_1", "INFJ_characteristics_2", "INFJ_characteristics_3", "INFJ_characteristics_4"],
+    famousFiguresKeys: ["INFJ_famous_figures_1", "INFJ_famous_figures_2", "INFJ_famous_figures_3"],
+    bestEnvironmentsKeys: ["INFJ_best_environments_1", "INFJ_best_environments_2", "INFJ_best_environments_3"],
+    growthTipsKeys: ["INFJ_growth_tips_1", "INFJ_growth_tips_2", "INFJ_growth_tips_3"]
   },
   "INTJ": {
-    name: "The Architect",
-    description: "Analytical in all matters, a commander who pursues perfect plans.",
-    recommendation: "Strategic Planning, Scientist, Software Development",
-    characteristics: ["Analytical and logical", "Independent and decisive", "Long-term perspective", "Thirst for knowledge"],
-    famous_figures: ["Elon Musk", "Stephen Hawking", "Isaac Newton"],
-    best_environments: ["Roles solving complex problems", "Independent research and development environments", "Fields requiring strategic thinking"],
-    growth_tips: ["Practice listening to and respecting others' opinions.", "Practice recognizing and expressing your emotions.", "Sometimes accept that it's okay not to be perfect."]
+    nameKey: "INTJ_name",
+    descriptionKey: "INTJ_description",
+    recommendationKey: "INTJ_recommendation",
+    characteristicsKeys: ["INTJ_characteristics_1", "INTJ_characteristics_2", "INTJ_characteristics_3", "INTJ_characteristics_4"],
+    famousFiguresKeys: ["INTJ_famous_figures_1", "INTJ_famous_figures_2", "INTJ_famous_figures_3"],
+    bestEnvironmentsKeys: ["INTJ_best_environments_1", "INTJ_best_environments_2", "INTJ_best_environments_3"],
+    growthTipsKeys: ["INTJ_growth_tips_1", "INTJ_growth_tips_2", "INTJ_growth_tips_3"]
   },
   "ISTP": {
-    name: "The Virtuoso",
-    description: "Quiet and observant, a master skilled in using machines and tools.",
-    recommendation: "Technician, Pilot, Sports Coach",
-    characteristics: ["Practical and realistic", "Excellent problem-solving skills", "Challenging and adventurous", "Sharp observation skills"],
-    famous_figures: ["Clint Eastwood", "Steve Jobs", "Bear Grylls"],
-    best_environments: ["Hands-on creation and manipulation", "Free and flexible work environments", "Roles dealing with crisis situations"],
-    growth_tips: ["Practice sharing your thoughts through communication with others.", "Try to set long-term plans and consistently put them into practice.", "Invest time in understanding and expressing your emotional side."]
+    nameKey: "ISTP_name",
+    descriptionKey: "ISTP_description",
+    recommendationKey: "ISTP_recommendation",
+    characteristicsKeys: ["ISTP_characteristics_1", "ISTP_characteristics_2", "ISTP_characteristics_3", "ISTP_characteristics_4"],
+    famousFiguresKeys: ["ISTP_famous_figures_1", "ISTP_famous_figures_2", "ISTP_famous_figures_3"],
+    bestEnvironmentsKeys: ["ISTP_best_environments_1", "ISTP_best_environments_2", "ISTP_best_environments_3"],
+    growthTipsKeys: ["ISTP_growth_tips_1", "ISTP_growth_tips_2", "ISTP_growth_tips_3"]
   },
   "ISFP": {
-    name: "The Adventurer",
-    description: "Warm-hearted and humble, with artistic sensibility and flexibility.",
-    recommendation: "Designer, Musician, Veterinarian",
-    characteristics: ["Excellent artistic sense", "Gentle and humble", "Free-spirited and spontaneous", "Enjoys the present"],
-    famous_figures: ["Michael Jackson", "Britney Spears", "Avril Lavigne"],
-    best_environments: ["Creative and artistic fields", "Work environments with a free atmosphere", "Professions connected with nature"],
-    growth_tips: ["Practice clarifying and expressing your values and beliefs.", "Invest time in planning for the future and setting goals.", "Sometimes practice constructively accepting criticism from others."]
+    nameKey: "ISFP_name",
+    descriptionKey: "ISFP_description",
+    recommendationKey: "ISFP_recommendation",
+    characteristicsKeys: ["ISFP_characteristics_1", "ISFP_characteristics_2", "ISFP_characteristics_3", "ISFP_characteristics_4"],
+    famousFiguresKeys: ["ISFP_famous_figures_1", "ISFP_famous_figures_2", "ISFP_famous_figures_3"],
+    bestEnvironmentsKeys: ["ISFP_best_environments_1", "ISFP_best_environments_2", "ISFP_best_environments_3"],
+    growthTipsKeys: ["ISFP_growth_tips_1", "ISFP_growth_tips_2", "ISFP_growth_tips_3"]
   },
   "INFP": {
-    name: "The Mediator",
-    description: "Imaginative and always exploring new ideas, an idealist.",
-    recommendation: "Writer, Psychologist, Editor",
-    characteristics: ["Idealistic and creative", "Deep empathy", "Open-minded and flexible", "Values personal values"],
-    famous_figures: ["William Shakespeare", "Johnny Depp", "Julia Roberts"],
-    best_environments: ["Roles where personal values can be realized", "Creative and independent work environments", "Roles that help people grow"],
-    growth_tips: ["Practice developing realistic problem-solving skills.", "Learn to clearly recognize and express your emotions.", "Sometimes practice analyzing situations with a critical perspective."]
+    nameKey: "INFP_name",
+    descriptionKey: "INFP_description",
+    recommendationKey: "INFP_recommendation",
+    characteristicsKeys: ["INFP_characteristics_1", "INFP_characteristics_2", "INFP_characteristics_3", "INFP_characteristics_4"],
+    famousFiguresKeys: ["INFP_famous_figures_1", "INFP_famous_figures_2", "INFP_famous_figures_3"],
+    bestEnvironmentsKeys: ["INFP_best_environments_1", "INFP_best_environments_2", "INFP_best_environments_3"],
+    growthTipsKeys: ["INFP_growth_tips_1", "INFP_growth_tips_2", "INFP_growth_tips_3"]
   },
   "INTP": {
-    name: "The Logician",
-    description: "An innovative inventor with an endless thirst for knowledge.",
-    recommendation: "Researcher, Philosopher, University Professor",
-    characteristics: ["Logical and analytical", "Strong intellectual curiosity", "Independent and critical", "Explores new ideas"],
-    famous_figures: ["Albert Einstein", "Bill Gates", "Marie Curie"],
-    best_environments: ["Research roles exploring complex theories", "Fields requiring independent thought and analysis", "Roles creating new knowledge"],
-    growth_tips: ["Practice clearly communicating your thoughts through interaction with others.", "Try to take an interest in practical problem-solving.", "Sometimes make an effort to understand and respect the emotional side."]
+    nameKey: "INTP_name",
+    descriptionKey: "INTP_description",
+    recommendationKey: "INTP_recommendation",
+    characteristicsKeys: ["INTP_characteristics_1", "INTP_characteristics_2", "INTP_characteristics_3", "INTP_characteristics_4"],
+    famousFiguresKeys: ["INTP_famous_figures_1", "INTP_famous_figures_2", "INTP_famous_figures_3"],
+    bestEnvironmentsKeys: ["INTP_best_environments_1", "INTP_best_environments_2", "INTP_best_environments_3"],
+    growthTipsKeys: ["INTP_growth_tips_1", "INTP_growth_tips_2", "INTP_growth_tips_3"]
   },
   "ESTP": {
-    name: "The Entrepreneur",
-    description: "An active person who brings joy to those around them with overflowing energy and vitality.",
-    recommendation: "Sales, Firefighter, Emergency Responder",
-    characteristics: ["Active and spontaneous", "Realistic and practical", "Excellent problem-solving skills", "Enjoys socializing"],
-    famous_figures: ["Donald Trump", "Madonna", "James Bond (fictional)"],
-    best_environments: ["Roles interacting with diverse people", "Fields requiring quick judgment and action", "Environments where new challenges can be enjoyed"],
-    growth_tips: ["Try to set long-term plans and consistently put them into practice.", "Practice understanding and empathizing with others' emotions.", "Sometimes take time to restrain impulsive actions and think carefully."]
+    nameKey: "ESTP_name",
+    descriptionKey: "ESTP_description",
+    recommendationKey: "ESTP_recommendation",
+    characteristicsKeys: ["ESTP_characteristics_1", "ESTP_characteristics_2", "ESTP_characteristics_3", "ESTP_characteristics_4"],
+    famousFiguresKeys: ["ESTP_famous_figures_1", "ESTP_famous_figures_2", "ESTP_famous_figures_3"],
+    bestEnvironmentsKeys: ["ESTP_best_environments_1", "ESTP_best_environments_2", "ESTP_best_environments_3"],
+    growthTipsKeys: ["ESTP_growth_tips_1", "ESTP_growth_tips_2", "ESTP_growth_tips_3"]
   },
   "ESFP": {
-    name: "The Entertainer",
-    description: "Optimistic and sociable, a natural entertainer who shines on stage.",
-    recommendation: "Actor, Event Planner, Entertainment Industry",
-    characteristics: ["Optimistic and sociable", "Excellent sense of humor", "Enjoys the present", "Enjoys attention"],
-    famous_figures: ["Elvis Presley", "Marilyn Monroe", "Avril Lavigne"],
-    best_environments: ["Roles expressing oneself in front of people", "Work environments with a free and joyful atmosphere", "Event and entertainment fields"],
-    growth_tips: ["Set long-term goals and practice acting systematically.", "Take time to deeply examine and understand your emotions.", "Sometimes take time alone to reflect on your inner self."]
+    nameKey: "ESFP_name",
+    descriptionKey: "ESFP_description",
+    recommendationKey: "ESFP_recommendation",
+    characteristicsKeys: ["ESFP_characteristics_1", "ESFP_characteristics_2", "ESFP_characteristics_3", "ESFP_characteristics_4"],
+    famousFiguresKeys: ["ESFP_famous_figures_1", "ESFP_famous_figures_2", "ESFP_famous_figures_3"],
+    bestEnvironmentsKeys: ["ESFP_best_environments_1", "ESFP_best_environments_2", "ESFP_best_environments_3"],
+    growthTipsKeys: ["ESFP_growth_tips_1", "ESFP_growth_tips_2", "ESFP_growth_tips_3"]
   },
   "ENFP": {
-    name: "The Campaigner",
-    description: "A free-thinking individual who lives life with overflowing energy and passion.",
-    recommendation: "Marketing, Content Creator, Counselor",
-    characteristics: ["Passionate and creative", "Overflowing with new ideas", "Values relationships with people", "Positive and optimistic"],
-    famous_figures: ["Walt Disney", "Robin Williams", "Oprah Winfrey"],
-    best_environments: ["Creative and free-spirited roles", "Roles collaborating with diverse people", "Fields exploring and developing new ideas"],
-    growth_tips: ["Set realistic goals and practice consistently putting them into practice.", "Sometimes take time to deeply examine and organize your emotions.", "Don't try to please everyone and prioritize your own values."]
+    nameKey: "ENFP_name",
+    descriptionKey: "ENFP_description",
+    recommendationKey: "ENFP_recommendation",
+    characteristicsKeys: ["ENFP_characteristics_1", "ENFP_characteristics_2", "ENFP_characteristics_3", "ENFP_characteristics_4"],
+    famousFiguresKeys: ["ENFP_famous_figures_1", "ENFP_famous_figures_2", "ENFP_famous_figures_3"],
+    bestEnvironmentsKeys: ["ENFP_best_environments_1", "ENFP_best_environments_2", "ENFP_best_environments_3"],
+    growthTipsKeys: ["ENFP_growth_tips_1", "ENFP_growth_tips_2", "ENFP_growth_tips_3"]
   },
   "ENTP": {
-    name: "The Debater",
-    description: "Enjoys intellectual challenges and discovers new ideas through debate and discussion.",
-    recommendation: "Lawyer, Consultant, Entrepreneur",
-    characteristics: ["Intellectual and logical", "Challenging and critical", "Explores new ideas", "Enjoys debate"],
-    famous_figures: ["Steve Jobs", "Benjamin Franklin", "Thomas Edison"],
-    best_environments: ["Roles solving complex problems", "Roles presenting and developing new ideas", "Environments growing through debate and discussion"],
-    growth_tips: ["Practice understanding and empathizing with others' emotions.", "Try to set long-term plans and consistently put them into practice.", "Sometimes be flexible enough to yield your arguments and accept others' opinions."]
+    nameKey: "ENTP_name",
+    descriptionKey: "ENTP_description",
+    recommendationKey: "ENTP_recommendation",
+    characteristicsKeys: ["ENTP_characteristics_1", "ENTP_characteristics_2", "ENTP_characteristics_3", "ENTP_characteristics_4"],
+    famousFiguresKeys: ["ENTP_famous_figures_1", "ENTP_famous_figures_2", "ENTP_famous_figures_3"],
+    bestEnvironmentsKeys: ["ENTP_best_environments_1", "ENTP_best_environments_2", "ENTP_best_environments_3"],
+    growthTipsKeys: ["ENTP_growth_tips_1", "ENTP_growth_tips_2", "ENTP_growth_tips_3"]
   },
   "ESTJ": {
-    name: "The Executive",
-    description: "Systematic and realistic, you demonstrate leadership and handle tasks cleanly.",
-    recommendation: "Business Management, Military Officer, Project Manager",
-    characteristics: ["Systematic and realistic", "Strong leadership", "Excellent sense of responsibility", "Values rules and procedures"],
-    famous_figures: ["George W. Bush", "Hillary Clinton", "John D. Rockefeller"],
-    best_environments: ["Leadership roles managing and guiding organizations", "Environments with clear goals and rules", "Fields prioritizing efficiency and productivity"],
-    growth_tips: ["Practice listening to and respecting others' opinions.", "Sometimes practice flexibly responding to situations.", "Invest time in recognizing and expressing your emotions."]
+    nameKey: "ESTJ_name",
+    descriptionKey: "ESTJ_description",
+    recommendationKey: "ESTJ_recommendation",
+    characteristicsKeys: ["ESTJ_characteristics_1", "ESTJ_characteristics_2", "ESTJ_characteristics_3", "ESTJ_characteristics_4"],
+    famousFiguresKeys: ["ESTJ_famous_figures_1", "ESTJ_famous_figures_2", "ESTJ_famous_figures_3"],
+    bestEnvironmentsKeys: ["ESTJ_best_environments_1", "ESTJ_best_environments_2", "ESTJ_best_environments_3"],
+    growthTipsKeys: ["ESTJ_growth_tips_1", "ESTJ_growth_tips_2", "ESTJ_growth_tips_3"]
   },
   "ESFJ": {
-    name: "The Consul",
-    description: "Kind and sociable, you enjoy serving people.",
-    recommendation: "Teacher, HR Professional, Social Worker",
-    characteristics: ["Sociable and kind", "Enjoys helping others", "Strong sense of responsibility", "Seeks harmonious relationships"],
-    famous_figures: ["Bill Clinton", "Anne Hathaway", "Jennifer Garner"],
-    best_environments: ["Roles communicating and collaborating with people", "Work environments with a warm and harmonious atmosphere", "Roles that help others grow"],
-    growth_tips: ["Practice prioritizing your own needs and feelings.", "Learn to clearly express your opinions in conflict situations.", "Sometimes take time alone to reflect on your inner self."]
+    nameKey: "ESFJ_name",
+    descriptionKey: "ESFJ_description",
+    recommendationKey: "ESFJ_recommendation",
+    characteristicsKeys: ["ESFJ_characteristics_1", "ESFJ_characteristics_2", "ESFJ_characteristics_3", "ESFJ_characteristics_4"],
+    famousFiguresKeys: ["ESFJ_famous_figures_1", "ESFJ_famous_figures_2", "ESFJ_famous_figures_3"],
+    bestEnvironmentsKeys: ["ESFJ_best_environments_1", "ESFJ_best_environments_2", "ESFJ_best_environments_3"],
+    growthTipsKeys: ["ESFJ_growth_tips_1", "ESFJ_growth_tips_2", "ESFJ_growth_tips_3"]
   },
   "ENFJ": {
-    name: "The Protagonist",
-    description: "Charismatic and passionate, you command an audience and demonstrate leadership.",
-    recommendation: "Politician, Coach, PR Professional",
-    characteristics: ["Charismatic and passionate", "Helps others grow", "Excellent communication skills", "Idealistic and optimistic"],
-    famous_figures: ["Barack Obama", "Mahatma Gandhi", "Oprah Winfrey"],
-    best_environments: ["Leadership roles inspiring and guiding people", "Roles pursuing meaningful social change", "Environments communicating and collaborating with diverse people"],
-    growth_tips: ["Set realistic goals and practice achieving them step by step.", "Take time to deeply examine and organize your emotions.", "Don't try to please everyone and prioritize your own values."]
+    nameKey: "ENFJ_name",
+    descriptionKey: "ENFJ_description",
+    recommendationKey: "ENFJ_recommendation",
+    characteristicsKeys: ["ENFJ_characteristics_1", "ENFJ_characteristics_2", "ENFJ_characteristics_3", "ENFJ_characteristics_4"],
+    famousFiguresKeys: ["ENFJ_famous_figures_1", "ENFJ_famous_figures_2", "ENFJ_famous_figures_3"],
+    bestEnvironmentsKeys: ["ENFJ_best_environments_1", "ENFJ_best_environments_2", "ENFJ_best_environments_3"],
+    growthTipsKeys: ["ENFJ_growth_tips_1", "ENFJ_growth_tips_2", "ENFJ_growth_tips_3"]
   },
   "ENTJ": {
-    name: "The Commander",
-    description: "Intellectually capable and decisive, you move forward without hesitation towards your goals.",
-    recommendation: "CEO, Investment Banker, Patent Attorney",
-    characteristics: ["Intellectual and decisive", "Strong leadership", "Strategic thinking ability", "Goal-oriented"],
-    famous_figures: ["Steve Jobs", "Margaret Thatcher", "Gordon Ramsay"],
-    best_environments: ["Leadership roles guiding organizations and presenting visions", "Roles solving complex problems and making decisions", "Competitive and challenging environments"],
-    growth_tips: ["Practice understanding and empathizing with others' emotions.", "Sometimes practice flexibly responding to situations.", "Invest time in recognizing and expressing your emotions."]
+    nameKey: "ENTJ_name",
+    descriptionKey: "ENTJ_description",
+    recommendationKey: "ENTJ_recommendation",
+    characteristicsKeys: ["ENTJ_characteristics_1", "ENTJ_characteristics_2", "ENTJ_characteristics_3", "ENTJ_characteristics_4"],
+    famousFiguresKeys: ["ENTJ_famous_figures_1", "ENTJ_famous_figures_2", "ENTJ_famous_figures_3"],
+    bestEnvironmentsKeys: ["ENTJ_best_environments_1", "ENTJ_best_environments_2", "ENTJ_best_environments_3"],
+    growthTipsKeys: ["ENTJ_growth_tips_1", "ENTJ_growth_tips_2", "ENTJ_growth_tips_3"]
   }
 };

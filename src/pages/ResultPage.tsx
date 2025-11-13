@@ -4,6 +4,7 @@ import { results } from '../data/results';
 import { mbtiStatistics } from '../data/mbtiStatistics'; // Import statistics
 import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from '../components/ui/card';
 import { Button } from '../components/ui/button';
+import { useTranslation } from '../context/LanguageContext';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 declare const Kakao: any; // Kakao SDK is a global object, typing it fully is beyond the scope of this task.
@@ -11,6 +12,7 @@ declare const Kakao: any; // Kakao SDK is a global object, typing it fully is be
 function ResultPage() {
   const { type } = useParams<{ type?: string }>();
   const navigate = useNavigate();
+  const { t } = useTranslation();
   const result = type ? results[type] : null;
 
   // Retrieve scores for explanation
@@ -24,7 +26,7 @@ function ResultPage() {
   }
 
   const generateExplanation = (mbtiType: string, scores: { [key: string]: number }) => {
-    if (!scores) return "Could not find MBTI type analysis information.";
+    if (!scores) return t('mbti_analysis_not_found');
 
     const explanationParts: string[] = [];
     type TraitPair = 'E' | 'I' | 'S' | 'N' | 'T' | 'F' | 'J' | 'P';
@@ -32,37 +34,38 @@ function ResultPage() {
     
     const traits: Array<{
       pair: [TraitPair, TraitPair];
-      name: string;
+      nameKey: string;
       desc: TraitDescription;
     }> = [
-      { pair: ['E', 'I'], name: '에너지의 방향', desc: { E: '외향형', I: '내향형', S: '', N: '', T: '', F: '', J: '', P: '' } },
-      { pair: ['S', 'N'], name: '정보 인식', desc: { S: '감각형', N: '직관형', E: '', I: '', T: '', F: '', J: '', P: '' } },
-      { pair: ['T', 'F'], name: '판단 기준', desc: { T: '사고형', F: '감정형', E: '', I: '', S: '', N: '', J: '', P: '' } },
+      { pair: ['E', 'I'], nameKey: 'energy_direction', desc: { E: t('extrovert'), I: t('introvert'), S: '', N: '', T: '', F: '', J: '', P: '' } },
+      { pair: ['S', 'N'], nameKey: 'information_perception', desc: { S: t('sensing'), N: t('intuition'), E: '', I: '', T: '', F: '', J: '', P: '' } },
+      { pair: ['T', 'F'], nameKey: 'judgment_criteria', desc: { T: t('thinking'), F: t('feeling'), E: '', I: '', S: '', N: '', J: '', P: '' } },
+      { pair: ['J', 'P'], nameKey: 'lifestyle', desc: { J: t('judging'), P: t('perceiving'), E: '', I: '', S: '', N: '', T: '', F: '' } },
     ];
 
     traits.forEach(trait => {
       const [first, second] = trait.pair;
       if (scores[first] > scores[second]) {
-        explanationParts.push(`In ${trait.name}, ${trait.desc[first]} (${scores[first]} points) is higher than ${trait.desc[second]} (${scores[second]} points).`);
+        explanationParts.push(t('higher_score_part1') + t(trait.nameKey) + t('higher_score_part2') + trait.desc[first] + t('higher_score_part3') + scores[first] + t('higher_score_part4') + trait.desc[second] + t('higher_score_part5'));
       } else if (scores[second] > scores[first]) {
-        explanationParts.push(`In ${trait.name}, ${trait.desc[second]} (${scores[second]} points) is higher than ${trait.desc[first]} (${scores[first]} points).`);
+        explanationParts.push(t('higher_score_part1') + t(trait.nameKey) + t('higher_score_part2') + trait.desc[second] + t('higher_score_part3') + scores[second] + t('higher_score_part4') + trait.desc[first] + t('higher_score_part5'));
       } else {
-        explanationParts.push(`In ${trait.name}, ${trait.desc[first]} (${scores[first]} points) and ${trait.desc[second]} (${scores[second]} points) are equal.`);
+        explanationParts.push(t('equal_score_part1') + t(trait.nameKey) + t('equal_score_part2') + trait.desc[first] + t('equal_score_part3') + scores[first] + t('equal_score_part4') + trait.desc[second] + t('equal_score_part5'));
       }
     });
 
-    return `Your MBTI type (${mbtiType}) was determined for the following reasons:\n\n${explanationParts.join('\n')}`;
+    return t('mbti_derived_reason_part1') + mbtiType + t('mbti_derived_reason_part2') + '\n\n' + explanationParts.join('\n');
   };
 
-  const mbtiExplanation = finalScores ? generateExplanation(type!, finalScores) : "Could not find MBTI type analysis information.";
+  const mbtiExplanation = finalScores ? generateExplanation(type!, finalScores) : t('mbti_analysis_not_found');
 
-  const shareTitle = `MBTI Life Recommendation Guide: ${result.name} (${type})`;
-  const shareDescription = result.description;
+  const shareTitle = `${t('app_title')}: ${t(result.nameKey)} (${type})`;
+  const shareDescription = t(result.descriptionKey);
   const shareImageUrl = `${window.location.origin}/mbti-recommend-app/vite.svg`; // Replace with an actual image URL if available
   const shareLink = window.location.href;
 
   const handleShareTwitter = () => {
-    const text = `My MBTI is ${result.name} (${type}), and my recommended career is ${result.recommendation}! #MBTI #CareerRecommendation`;
+    const text = `${t('my_mbti_is')} ${t(result.nameKey)} (${type}), ${t('and_recommended_career_is')} ${t(result.recommendationKey)}! #MBTI #CareerRecommendation`;
     const twitterUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(shareLink)}`;
     window.open(twitterUrl, '_blank');
   };
@@ -82,7 +85,7 @@ function ResultPage() {
         },
         buttons: [
           {
-            title: 'View Test Results',
+            title: t('view_test_results'),
             link: {
               mobileWebUrl: shareLink,
               webUrl: shareLink,
@@ -91,7 +94,7 @@ function ResultPage() {
         ],
       });
     } else {
-      alert('Kakao SDK is not initialized. Please check the developer tools.');
+      alert(t('kakao_sdk_not_initialized'));
     }
   };
 
@@ -103,45 +106,45 @@ function ResultPage() {
   const handleCopyLink = async () => {
     try {
       await navigator.clipboard.writeText(shareLink);
-      alert('Link copied to clipboard!');
+      alert(t('link_copied'));
     } catch (err) {
       console.error('Failed to copy: ', err);
-      alert('Failed to copy link.');
+      alert(t('failed_to_copy_link'));
     }
   };
 
   const userMbtiStat = mbtiStatistics.find(stat => stat.type === type);
 
   return (
-    <div className="min-h-screen bg-neutral-100 dark:bg-neutral-900 flex items-center justify-center p-4">
+    <div className="min-h-screen bg-background flex items-center justify-center p-4">
       <Card className="w-full max-w-xl text-center">
         <CardHeader>
-          <CardDescription className="text-xl font-semibold text-neutral-500 dark:text-neutral-400 mb-2">Your Type Is</CardDescription>
-          <CardTitle className="text-5xl font-extrabold text-neutral-700 dark:text-neutral-300 mb-4">{type}</CardTitle>
-          <CardTitle className="text-4xl font-bold text-neutral-600 dark:text-neutral-400 mb-4">{result.name}</CardTitle>
-          <CardDescription className="text-neutral-700 dark:text-neutral-300 text-lg mb-6">{result.description}</CardDescription>
+          <CardDescription className="text-xl font-semibold text-primary-500 dark:text-primary-400 mb-2">{t('your_type_is')}</CardDescription>
+          <CardTitle className="text-5xl font-extrabold text-primary-700 dark:text-primary-300 mb-4">{type}</CardTitle>
+          <CardTitle className="text-4xl font-bold text-primary-600 dark:text-primary-400 mb-4">{t(result.nameKey)}</CardTitle>
+          <CardDescription className="text-foreground text-lg mb-6">{t(result.descriptionKey)}</CardDescription>
         </CardHeader>
         <CardContent>
-          <div className="bg-neutral-50 dark:bg-neutral-900 p-6 rounded-lg mb-6">
-            <h2 className="text-2xl font-bold text-neutral-800 dark:text-neutral-200 mb-3">Recommended Career</h2>
-            <p className="text-neutral-700 dark:text-neutral-300 text-xl">{result.recommendation}</p>
+          <div className="bg-primary-50 dark:bg-primary-900 p-6 rounded-lg mb-6">
+            <h2 className="text-2xl font-bold text-primary-800 dark:text-primary-200 mb-3">{t('recommended_career')}</h2>
+            <p className="text-primary-700 dark:text-primary-300 text-xl">{t(result.recommendationKey)}</p>
           </div>
 
           {finalScores && (
-            <div className="bg-neutral-50 dark:bg-neutral-700 p-6 rounded-lg mb-6 text-left">
-              <h2 className="text-2xl font-bold text-neutral-800 dark:text-neutral-200 mb-3">Why did I get this MBTI type?</h2>
-              <p className="text-neutral-700 dark:text-neutral-300 whitespace-pre-wrap">{mbtiExplanation}</p>
+            <div className="bg-background p-6 rounded-lg mb-6 text-left">
+              <h2 className="text-2xl font-bold text-foreground mb-3">{t('why_this_mbti')}</h2>
+              <p className="text-foreground whitespace-pre-wrap">{mbtiExplanation}</p>
             </div>
           )}
 
           {userMbtiStat && (
             <div className="bg-blue-50 dark:bg-blue-900 p-6 rounded-lg mb-6 text-left">
-              <h2 className="text-2xl font-bold text-blue-800 dark:text-blue-200 mb-3">MBTI Type Statistics</h2>
+              <h2 className="text-2xl font-bold text-blue-800 dark:text-blue-200 mb-3">{t('mbti_statistics')}</h2>
               <p className="text-blue-700 dark:text-blue-300">
-                Your MBTI type, <span className="font-bold">{userMbtiStat.type}</span>, makes up about <span className="font-bold">{userMbtiStat.percentage}%</span> of the total population.
+                {t('mbti_percentage_part1')}<span className="font-bold">{userMbtiStat.type}</span>{t('mbti_percentage_part2')}<span className="font-bold">{userMbtiStat.percentage}%</span>{t('mbti_percentage_part3')}
               </p>
               <p className="text-blue-700 dark:text-blue-300 mt-2">
-                This is considered a {userMbtiStat.percentage > 10 ? "relatively common type" : userMbtiStat.percentage > 5 ? "moderately common type" : "rare type"}.
+                {userMbtiStat.percentage > 10 ? t('mbti_rarity_common') : userMbtiStat.percentage > 5 ? t('mbti_rarity_average') : t('mbti_rarity_rare')}
               </p>
             </div>
           )}
@@ -152,33 +155,32 @@ function ResultPage() {
               onClick={handleShareTwitter}
               className="w-full"
             >
-              Share on Twitter
+              {t('share_twitter')}
             </Button>
             <Button
               onClick={handleShareKakao}
               className="w-full"
             >
-              Share on KakaoTalk
+              {t('share_kakao')}
             </Button>
             <Button
               onClick={handleShareFacebook}
               className="w-full"
             >
-              Share on Facebook
+              {t('share_facebook')}
             </Button>
             <Button
               onClick={handleCopyLink}
-              variant="neutral"
               className="w-full"
             >
-              Copy Link
+              {t('copy_link')}
             </Button>
             <Link
               to="/"
               className="w-full"
             >
               <Button variant="default">
-                다시 테스트하기
+                {t('test_again')}
               </Button>
             </Link>
           </div>

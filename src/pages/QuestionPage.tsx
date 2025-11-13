@@ -5,10 +5,12 @@ import { questions } from '../data/questions';
 import { calculateMbtiType, shuffleArray } from '../utils/mbtiUtils';
 import { Card, CardHeader, CardTitle, CardContent, CardFooter } from '../components/ui/card';
 import { Button } from '../components/ui/button';
+import { useTranslation } from '../context/LanguageContext';
 
 function QuestionPage() {
   const { id } = useParams();
   const navigate = useNavigate();
+  const { t } = useTranslation();
   const currentQuestionIndex = parseInt(id || '1', 10) - 1; // 0-indexed
 
   const [shuffledQuestionIds] = useState<number[]>(() => {
@@ -74,27 +76,27 @@ function QuestionPage() {
   };
 
   if (!question) {
-    return <div className="text-neutral-900 dark:text-neutral-100">잘못된 접근입니다.</div>;
+    return <div className="text-foreground">{t('invalid_access')}</div>;
   }
 
   const progress = ((currentQuestionIndex + 1) / questions.length) * 100;
 
   return (
-    <div className="min-h-screen bg-neutral-100 dark:bg-neutral-900 flex items-center justify-center p-4">
+    <div className="min-h-screen bg-background flex items-center justify-center p-4">
       <Card className="w-full max-w-xl">
         <CardHeader>
           <div className="mb-4">
-            <div className="w-full bg-neutral-200 dark:bg-neutral-700 rounded-full h-2.5">
+            <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2.5">
               <div
                 className="bg-primary-600 dark:bg-primary-500 h-2.5 rounded-full"
                 style={{ width: `${progress}%` }}
               ></div>
             </div>
-            <p className="text-center text-sm text-neutral-600 dark:text-neutral-400 mt-2">{currentQuestionIndex + 1} / {questions.length}</p>
+            <p className="text-center text-sm text-gray-600 dark:text-gray-400 mt-2">{currentQuestionIndex + 1} / {questions.length}</p>
           </div>
           <CardTitle className="text-center mb-8">
-            <p className="text-2xl font-bold text-primary-600 dark:text-primary-400">Q{currentQuestionIndex + 1}</p>
-            <h2 className="text-xl text-neutral-800 dark:text-neutral-200 mt-2">{question.question}</h2>
+            <p className="text-2xl font-bold text-primary-600 dark:text-primary-400">{t('question_prefix')}{currentQuestionIndex + 1}</p>
+            <h2 className="text-xl text-foreground mt-2">{t(question.questionKey)}</h2>
           </CardTitle>
         </CardHeader>
         <CardContent>
@@ -106,7 +108,7 @@ function QuestionPage() {
                 className="w-full"
                 variant="outline"
               >
-                {answer.text}
+                {t(answer.textKey)}
               </Button>
             ))}
           </div>
@@ -116,9 +118,9 @@ function QuestionPage() {
             <Button
               onClick={handlePrevious}
               className="w-full mt-4"
-              variant="neutral"
+              variant="gray"
             >
-              이전 질문
+              {t('previous_question')}
             </Button>
           </CardFooter>
         )}

@@ -5,12 +5,23 @@ import HomePage from './pages/HomePage';
 import QuestionPage from './pages/QuestionPage';
 import ResultPage from './pages/ResultPage';
 import { Button } from './components/ui/button';
+import { LanguageProvider, useTranslation } from './context/LanguageContext';
 
 function App() {
+  return (
+    <LanguageProvider>
+      <AppContent />
+    </LanguageProvider>
+  );
+}
+
+function AppContent() {
   const [darkMode, setDarkMode] = useState(() => {
     const savedTheme = localStorage.getItem('theme');
     return savedTheme === 'dark';
   });
+
+  const { language, setLanguage, t } = useTranslation();
 
   useEffect(() => {
     if (darkMode) {
@@ -26,16 +37,36 @@ function App() {
     setDarkMode(!darkMode);
   };
 
+  const handleLanguageChange = (lang: 'en' | 'ko') => {
+    setLanguage(lang);
+  };
+
   return (
     <Router>
-      <div className="min-h-screen border-none bg-neutral-100 dark:bg-neutral-900 text-neutral-900 dark:text-neutral-100 transition-colors duration-300">
-        <Button
-          onClick={toggleDarkMode}
-          variant="neutral"
-          className="fixed top-4 right-4 p-2 rounded-full shadow-md z-50"
-        >
-          {darkMode ? '☀️ Light Mode' : '🌙 Dark Mode'}
-        </Button>
+      <div className="min-h-screen border-none bg-background text-foreground transition-colors duration-300">
+        <div className="fixed top-4 right-4 flex space-x-2 z-50">
+          <Button
+            onClick={() => handleLanguageChange('en')}
+            variant={language === 'en' ? 'default' : 'outline'}
+            size="sm"
+          >
+            EN
+          </Button>
+          <Button
+            onClick={() => handleLanguageChange('ko')}
+            variant={language === 'ko' ? 'default' : 'outline'}
+            size="sm"
+          >
+            KO
+          </Button>
+          <Button
+            onClick={toggleDarkMode}
+            variant="gray"
+            size="sm"
+          >
+            {darkMode ? '☀️' : '🌙'}
+          </Button>
+        </div>
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/question/:id" element={<QuestionPage />} />
