@@ -26,7 +26,7 @@ const buttonVariants = cva(
       },
       size: {
         // 💡 새로운 size 정의 (실제 버튼에서 확인된 크기)
-        default: "h-9 px-4 py-2 has-[>svg]:px-3",
+        default: "min-h-9 px-4 py-2 has-[>svg]:px-3",
         sm: "h-9 rounded-md px-3",
         lg: "h-11 rounded-md px-8",
         icon: "h-10 w-10",
