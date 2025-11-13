@@ -14,98 +14,98 @@ export interface Question {
 export const questions: Question[] = [
   {
     id: 1,
-    question: "주말에는 주로 무엇을 하며 시간을 보내시나요?",
+    question: "What do you usually do on weekends?",
     answers: [
-      { text: "밖에서 새로운 사람들을 만나며 활동적으로 보냅니다.", type: "E" },
-      { text: "집에서 혼자 책을 읽거나 좋아하는 취미에 몰두합니다.", type: "I" }
+      { text: "I actively spend time meeting new people outside.", type: "E" },
+      { text: "I stay home, read books alone, or immerse myself in my favorite hobbies.", type: "I" }
     ]
   },
   {
     id: 2,
-    question: "새로운 정보를 얻을 때 어떤 방식이 편한가요?",
+    question: "What way is comfortable for you when getting new information?",
     answers: [
-      { text: "사실, 구체적인 예시, 현재 경험에 기반한 정보를 선호합니다.", type: "S" },
-      { text: "미래의 가능성, 전체적인 맥락, 숨겨진 의미를 파악하려 합니다.", type: "N" }
+      { text: "I prefer information based on facts, specific examples, and current experiences.", type: "S" },
+      { text: "I try to grasp future possibilities, the overall context, and hidden meanings.", type: "N" }
     ]
   },
   {
     id: 3,
-    question: "친구가 고민을 털어놓을 때, 당신의 반응은?",
+    question: "When a friend confides in you about their worries, what is your reaction?",
     answers: [
-      { text: "정확한 분석과 논리적인 해결책을 제시합니다.", type: "T" },
-      { text: "공감해주고 감정을 이해하며 위로해줍니다.", type: "F" }
+      { text: "I provide accurate analysis and logical solutions.", type: "T" },
+      { text: "I empathize, understand their feelings, and comfort them.", type: "F" }
     ]
   },
   {
     id: 4,
-    question: "여행 계획을 세울 때 당신의 스타일은?",
+    question: "What is your style when planning a trip?",
     answers: [
-      { text: "여행 일정과 계획을 미리 완벽하게 짜놓고 그대로 진행합니다.", type: "J" },
-      { text: "큰 틀만 잡고, 현지 상황이나 기분에 따라 유동적으로 움직입니다.", type: "P" }
+      { text: "I meticulously plan the itinerary in advance and follow it exactly.", type: "J" },
+      { text: "I only set a broad framework and move flexibly according to local situations or mood.", type: "P" }
     ]
   },
   {
     id: 5,
-    question: "업무 또는 과제를 할 때, 당신은?",
+    question: "When working on a task or assignment, what are you like?",
     answers: [
-      { text: "여러 사람과 협력하고 아이디어를 공유하는 것을 즐깁니다.", type: "E" },
-      { text: "혼자 조용히 집중해서 처리하는 것을 선호합니다.", type: "I" }
+      { text: "I enjoy collaborating with various people and sharing ideas.", type: "E" },
+      { text: "I prefer to concentrate quietly and handle things alone.", type: "I" }
     ]
   },
   {
     id: 6,
-    question: "영화를 보고 난 후, 당신의 감상은?",
+    question: "After watching a movie, what are your thoughts?",
     answers: [
-      { text: "영화의 구체적인 장면이나 대사를 생생하게 기억합니다.", type: "S" },
-      { text: "영화가 담고 있는 상징이나 숨겨진 메시지에 대해 생각합니다.", type: "N" }
+      { text: "I vividly remember specific scenes or lines from the movie.", type: "S" },
+      { text: "I think about the symbolism or hidden messages contained in the movie.", type: "N" }
     ]
   },
   {
     id: 7,
-    question: "결정을 내릴 때 무엇을 더 중요하게 생각하나요?",
+    question: "What do you consider more important when making a decision?",
     answers: [
-      { text: "객관적인 사실과 데이터에 근거한 합리적인 판단", type: "T" },
-      { text: "결정이 다른 사람들에게 미칠 영향과 조화를 고려", type: "F" }
+      { text: "Rational judgment based on objective facts and data.", type: "T" },
+      { text: "Considering the impact of the decision on others and harmony.", type: "F" }
     ]
   },
   {
     id: 8,
-    question: "갑작스러운 약속 변경에 대한 당신의 반응은?",
+    question: "What is your reaction to a sudden change in plans?",
     answers: [
-      { text: "계획이 틀어져 스트레스를 받고, 새로운 계획을 세우려 합니다.", type: "J" },
-      { text: "상황에 맞춰 유연하게 대처하고, 새로운 가능성을 탐색합니다.", type: "P" }
+      { text: "I get stressed when plans go awry and try to make new ones.", type: "J" },
+      { text: "I adapt flexibly to the situation and explore new possibilities.", type: "P" }
     ]
   },
   {
     id: 9,
-    question: "파티나 모임에서 당신은 주로 어떤 모습인가요?",
+    question: "What are you usually like at parties or gatherings?",
     answers: [
-      { text: "다양한 사람들과 어울리며 대화의 중심에 있습니다.", type: "E" },
-      { text: "소수의 친한 친구들과 깊은 대화를 나누는 것을 선호합니다.", type: "I" }
+      { text: "I mingle with various people and am at the center of conversations.", type: "E" },
+      { text: "I prefer to have deep conversations with a few close friends.", type: "I" }
     ]
   },
   {
     id: 10,
-    question: "새로운 기술을 배울 때, 당신은?",
+    question: "When learning a new skill, what are you like?",
     answers: [
-      { text: "실제 사용 예시를 보며 단계별로 따라하는 것이 편합니다.", type: "S" },
-      { text: "기본 원리와 개념을 먼저 이해하고 전체적인 그림을 그립니다.", type: "N" }
+      { text: "It's easier for me to follow step-by-step with real-world examples.", type: "S" },
+      { text: "I first understand the basic principles and concepts and then grasp the overall picture.", type: "N" }
     ]
   },
   {
     id: 11,
-    question: "친구가 당신에게 잘못했을 때, 당신은?",
+    question: "When a friend wrongs you, what do you do?",
     answers: [
-      { text: "잘잘못을 명확히 따지고, 솔직하게 자신의 감정을 표현합니다.", type: "T" },
-      { text: "관계를 유지하기 위해 되도록이면 갈등을 피하려고 합니다.", type: "F" }
+      { text: "I clearly distinguish right from wrong and honestly express my feelings.", type: "T" },
+      { text: "I try to avoid conflict as much as possible to maintain the relationship.", type: "F" }
     ]
   },
   {
     id: 12,
-    question: "당신의 책상은 어떤 상태인가요?",
+    question: "What is the state of your desk?",
     answers: [
-      { text: "항상 깔끔하게 정돈되어 있고, 모든 물건이 제자리에 있습니다.", type: "J" },
-      { text: "창의적인 혼돈 속에서 필요한 것을 찾아내는 편입니다.", type: "P" }
+      { text: "It's always neatly organized, and everything is in its place.", type: "J" },
+      { text: "I tend to find what I need amidst creative chaos.", type: "P" }
     ]
   }
 ];

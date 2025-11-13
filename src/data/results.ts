@@ -12,147 +12,147 @@ export interface MBTIResult {
 
 export const results: { [key: string]: MBTIResult } = {
   "ISTJ": {
-    name: "청렴결백한 논리주의자",
-    description: "사실에 근거하여 사고하며, 책임감이 강하고 현실적인 성격입니다.",
-    recommendation: "회계, 데이터 분석, 엔지니어링",
-    characteristics: ["신중하고 현실적", "책임감이 강함", "정리정돈을 잘함", "원리원칙을 중요시함"],
-    famous_figures: ["조지 워싱턴", "앙겔라 메르켈", "워렌 버핏"],
-    best_environments: ["체계적이고 안정적인 환경", "명확한 규칙과 절차가 있는 곳", "정확성과 세부 사항이 중요한 직무"],
-    growth_tips: ["새로운 아이디어에 개방적인 태도를 가지세요.", "자신의 감정을 표현하는 연습을 해보세요.", "때로는 계획 없이 즉흥적인 경험을 즐겨보세요."]
+    name: "The Duty Fulfiller",
+    description: "You think based on facts, are highly responsible, and realistic.",
+    recommendation: "Accounting, Data Analysis, Engineering",
+    characteristics: ["Cautious and realistic", "Strong sense of responsibility", "Well-organized", "Values principles"],
+    famous_figures: ["George Washington", "Angela Merkel", "Warren Buffett"],
+    best_environments: ["Systematic and stable environments", "Places with clear rules and procedures", "Roles where accuracy and detail are important"],
+    growth_tips: ["Be open to new ideas.", "Practice expressing your emotions.", "Sometimes enjoy spontaneous experiences without a plan."]
   },
   "ISFJ": {
-    name: "용감한 수호자",
-    description: "조용하고 차분하며 헌신적이고 배려심이 깊습니다. 맡은 일은 끝까지 해냅니다.",
-    recommendation: "간호사, 교육자, 행정 전문가",
-    characteristics: ["따뜻하고 헌신적", "책임감이 강함", "세심하고 관찰력이 뛰어남", "타인의 감정에 민감함"],
-    famous_figures: ["마더 테레사", "비욘세", "셀레나 고메즈"],
-    best_environments: ["사람들을 돕는 직업", "안정적이고 조화로운 환경", "세심한 배려가 필요한 분야"],
-    growth_tips: ["자신의 필요와 감정을 우선시하는 연습을 해보세요.", "갈등 상황에서 자신의 의견을 명확히 표현하는 법을 배우세요.", "새로운 경험과 변화를 두려워하지 마세요."]
+    name: "The Protector",
+    description: "Quiet, calm, dedicated, and considerate. You see tasks through to the end.",
+    recommendation: "Nurse, Educator, Administrative Professional",
+    characteristics: ["Warm and dedicated", "Strong sense of responsibility", "Meticulous and observant", "Sensitive to others' feelings"],
+    famous_figures: ["Mother Teresa", "Beyoncé", "Selena Gomez"],
+    best_environments: ["Professions helping people", "Stable and harmonious environments", "Fields requiring meticulous care"],
+    growth_tips: ["Practice prioritizing your own needs and feelings.", "Learn to clearly express your opinions in conflict situations.", "Don't be afraid of new experiences and changes."]
   },
   "INFJ": {
-    name: "선의의 옹호자",
-    description: "통찰력이 뛰어나며, 사람들에게 영감을 불어넣는 이상주의자입니다.",
-    recommendation: "상담가, 작가, 인권 운동가",
-    characteristics: ["통찰력과 직관력", "이상주의적", "타인의 성장을 도움", "깊은 공감 능력"],
-    famous_figures: ["마틴 루터 킹 주니어", "넬슨 만델라", "오프라 윈프리"],
-    best_environments: ["의미 있는 일을 할 수 있는 곳", "창의적이고 독립적인 작업 환경", "사람들의 잠재력을 이끌어내는 역할"],
-    growth_tips: ["현실적인 목표를 설정하고 단계적으로 달성하는 연습을 해보세요.", "자신만의 시간을 충분히 가지며 에너지를 충전하세요.", "모든 사람을 만족시키려 하지 마세요."]
+    name: "The Advocate",
+    description: "Highly insightful, an idealist who inspires people.",
+    recommendation: "Counselor, Writer, Human Rights Activist",
+    characteristics: ["Insightful and intuitive", "Idealistic", "Helps others grow", "Deep empathy"],
+    famous_figures: ["Martin Luther King Jr.", "Nelson Mandela", "Oprah Winfrey"],
+    best_environments: ["Where meaningful work can be done", "Creative and independent work environments", "Roles that bring out people's potential"],
+    growth_tips: ["Set realistic goals and practice achieving them step by step.", "Take enough time for yourself to recharge your energy.", "Don't try to please everyone."]
   },
   "INTJ": {
-    name: "용의주도한 전략가",
-    description: "모든 일에 있어서 분석적이며, 완벽한 계획을 추구하는 사령관입니다.",
-    recommendation: "전략 기획, 과학자, 소프트웨어 개발",
-    characteristics: ["분석적이고 논리적", "독립적이고 결단력 있음", "장기적인 안목", "지식에 대한 갈망"],
-    famous_figures: ["일론 머스크", "스티븐 호킹", "아이작 뉴턴"],
-    best_environments: ["복잡한 문제를 해결하는 직무", "독립적인 연구 및 개발 환경", "전략적 사고가 필요한 분야"],
-    growth_tips: ["타인의 의견을 경청하고 존중하는 태도를 가지세요.", "자신의 감정을 인식하고 표현하는 연습을 해보세요.", "때로는 완벽하지 않아도 괜찮다는 것을 받아들이세요."]
+    name: "The Architect",
+    description: "Analytical in all matters, a commander who pursues perfect plans.",
+    recommendation: "Strategic Planning, Scientist, Software Development",
+    characteristics: ["Analytical and logical", "Independent and decisive", "Long-term perspective", "Thirst for knowledge"],
+    famous_figures: ["Elon Musk", "Stephen Hawking", "Isaac Newton"],
+    best_environments: ["Roles solving complex problems", "Independent research and development environments", "Fields requiring strategic thinking"],
+    growth_tips: ["Practice listening to and respecting others' opinions.", "Practice recognizing and expressing your emotions.", "Sometimes accept that it's okay not to be perfect."]
   },
   "ISTP": {
-    name: "만능 재주꾼",
-    description: "조용하고 관찰력이 뛰어나며, 기계나 도구 사용에 능숙한 장인입니다.",
-    recommendation: "기술자, 파일럿, 스포츠 코치",
-    characteristics: ["실용적이고 현실적", "문제 해결 능력 뛰어남", "도전적이고 모험적", "관찰력이 예리함"],
-    famous_figures: ["클린트 이스트우드", "스티브 잡스", "베어 그릴스"],
-    best_environments: ["손으로 직접 만들고 조작하는 일", "자유롭고 유연한 작업 환경", "위기 상황에 대처하는 직무"],
-    growth_tips: ["타인과의 소통을 통해 자신의 생각을 공유하는 연습을 해보세요.", "장기적인 계획을 세우고 꾸준히 실천하는 노력을 해보세요.", "감정적인 면을 이해하고 표현하는 데 시간을 투자하세요."]
+    name: "The Virtuoso",
+    description: "Quiet and observant, a master skilled in using machines and tools.",
+    recommendation: "Technician, Pilot, Sports Coach",
+    characteristics: ["Practical and realistic", "Excellent problem-solving skills", "Challenging and adventurous", "Sharp observation skills"],
+    famous_figures: ["Clint Eastwood", "Steve Jobs", "Bear Grylls"],
+    best_environments: ["Hands-on creation and manipulation", "Free and flexible work environments", "Roles dealing with crisis situations"],
+    growth_tips: ["Practice sharing your thoughts through communication with others.", "Try to set long-term plans and consistently put them into practice.", "Invest time in understanding and expressing your emotional side."]
   },
   "ISFP": {
-    name: "호기심 많은 예술가",
-    description: "마음이 따뜻하고 겸손하며, 예술적인 감각과 유연성을 지니고 있습니다.",
-    recommendation: "디자이너, 음악가, 수의사",
-    characteristics: ["예술적 감각 뛰어남", "온화하고 겸손함", "자유롭고 즉흥적", "현재를 즐김"],
-    famous_figures: ["마이클 잭슨", "브리트니 스피어스", "아브릴 라빈"],
-    best_environments: ["창의적이고 예술적인 분야", "자유로운 분위기의 작업 환경", "자연과 함께하는 직업"],
-    growth_tips: ["자신의 가치와 신념을 명확히 하고 표현하는 연습을 해보세요.", "미래를 계획하고 목표를 설정하는 데 시간을 투자하세요.", "때로는 타인의 비판을 건설적으로 받아들이는 연습을 해보세요."]
+    name: "The Adventurer",
+    description: "Warm-hearted and humble, with artistic sensibility and flexibility.",
+    recommendation: "Designer, Musician, Veterinarian",
+    characteristics: ["Excellent artistic sense", "Gentle and humble", "Free-spirited and spontaneous", "Enjoys the present"],
+    famous_figures: ["Michael Jackson", "Britney Spears", "Avril Lavigne"],
+    best_environments: ["Creative and artistic fields", "Work environments with a free atmosphere", "Professions connected with nature"],
+    growth_tips: ["Practice clarifying and expressing your values and beliefs.", "Invest time in planning for the future and setting goals.", "Sometimes practice constructively accepting criticism from others."]
   },
   "INFP": {
-    name: "열정적인 중재자",
-    description: "상상력이 풍부하며 늘 새로운 아이디어를 탐색하는 이상주의자입니다.",
-    recommendation: "작가, 심리학자, 편집자",
-    characteristics: ["이상주의적이고 창의적", "깊은 공감 능력", "개방적이고 유연함", "자신의 가치를 중요시함"],
-    famous_figures: ["윌리엄 셰익스피어", "조니 뎁", "줄리아 로버츠"],
-    best_environments: ["자신의 가치를 실현할 수 있는 직무", "창의적이고 독립적인 작업 환경", "사람들의 성장을 돕는 역할"],
-    growth_tips: ["현실적인 문제 해결 능력을 키우는 연습을 해보세요.", "자신의 감정을 명확히 인식하고 표현하는 법을 배우세요.", "때로는 비판적인 시각을 가지고 상황을 분석하는 연습을 해보세요."]
+    name: "The Mediator",
+    description: "Imaginative and always exploring new ideas, an idealist.",
+    recommendation: "Writer, Psychologist, Editor",
+    characteristics: ["Idealistic and creative", "Deep empathy", "Open-minded and flexible", "Values personal values"],
+    famous_figures: ["William Shakespeare", "Johnny Depp", "Julia Roberts"],
+    best_environments: ["Roles where personal values can be realized", "Creative and independent work environments", "Roles that help people grow"],
+    growth_tips: ["Practice developing realistic problem-solving skills.", "Learn to clearly recognize and express your emotions.", "Sometimes practice analyzing situations with a critical perspective."]
   },
   "INTP": {
-    name: "논리적인 사색가",
-    description: "지식에 대한 끝없는 갈망을 가진 혁신적인 발명가입니다.",
-    recommendation: "연구원, 철학자, 대학 교수",
-    characteristics: ["논리적이고 분석적", "지적 호기심 강함", "독립적이고 비판적", "새로운 아이디어 탐구"],
-    famous_figures: ["알베르트 아인슈타인", "빌 게이츠", "마리 퀴리"],
-    best_environments: ["복잡한 이론을 탐구하는 연구직", "독립적인 사고와 분석이 필요한 분야", "새로운 지식을 창출하는 역할"],
-    growth_tips: ["타인과의 소통을 통해 자신의 생각을 명확히 전달하는 연습을 해보세요.", "실용적인 문제 해결에 관심을 가져보세요.", "때로는 감정적인 면을 이해하고 존중하는 노력을 해보세요."]
+    name: "The Logician",
+    description: "An innovative inventor with an endless thirst for knowledge.",
+    recommendation: "Researcher, Philosopher, University Professor",
+    characteristics: ["Logical and analytical", "Strong intellectual curiosity", "Independent and critical", "Explores new ideas"],
+    famous_figures: ["Albert Einstein", "Bill Gates", "Marie Curie"],
+    best_environments: ["Research roles exploring complex theories", "Fields requiring independent thought and analysis", "Roles creating new knowledge"],
+    growth_tips: ["Practice clearly communicating your thoughts through interaction with others.", "Try to take an interest in practical problem-solving.", "Sometimes make an effort to understand and respect the emotional side."]
   },
   "ESTP": {
-    name: "모험을 즐기는 사업가",
-    description: "넘치는 에너지와 활력으로 주변 사람들에게 즐거움을 선사하는 활동가입니다.",
-    recommendation: "영업, 소방관, 응급 구조사",
-    characteristics: ["활동적이고 즉흥적", "현실적이고 실용적", "문제 해결 능력 뛰어남", "사람들과 어울리는 것을 즐김"],
-    famous_figures: ["도널드 트럼프", "마돈나", "제임스 본드 (가상)"],
-    best_environments: ["다양한 사람들과 교류하는 직무", "빠른 판단과 행동이 필요한 분야", "새로운 도전을 즐길 수 있는 환경"],
-    growth_tips: ["장기적인 계획을 세우고 꾸준히 실천하는 노력을 해보세요.", "타인의 감정을 이해하고 공감하는 연습을 해보세요.", "때로는 충동적인 행동을 자제하고 신중하게 생각하는 시간을 가지세요."]
+    name: "The Entrepreneur",
+    description: "An active person who brings joy to those around them with overflowing energy and vitality.",
+    recommendation: "Sales, Firefighter, Emergency Responder",
+    characteristics: ["Active and spontaneous", "Realistic and practical", "Excellent problem-solving skills", "Enjoys socializing"],
+    famous_figures: ["Donald Trump", "Madonna", "James Bond (fictional)"],
+    best_environments: ["Roles interacting with diverse people", "Fields requiring quick judgment and action", "Environments where new challenges can be enjoyed"],
+    growth_tips: ["Try to set long-term plans and consistently put them into practice.", "Practice understanding and empathizing with others' emotions.", "Sometimes take time to restrain impulsive actions and think carefully."]
   },
   "ESFP": {
-    name: "자유로운 영혼의 연예인",
-    description: "낙천적이며 사교성이 뛰어나고, 무대 위에서 빛나는 타고난 연예인입니다.",
-    recommendation: "배우, 이벤트 기획, 엔터테인먼트 산업",
-    characteristics: ["낙천적이고 사교적", "유머 감각 뛰어남", "현재를 즐김", "사람들의 관심을 즐김"],
-    famous_figures: ["엘비스 프레슬리", "마릴린 먼로", "레오나르도 디카프리오"],
-    best_environments: ["사람들 앞에서 자신을 표현하는 직무", "자유롭고 즐거운 분위기의 작업 환경", "이벤트 및 엔터테인먼트 분야"],
-    growth_tips: ["장기적인 목표를 설정하고 계획적으로 행동하는 연습을 해보세요.", "자신의 감정을 깊이 들여다보고 이해하는 시간을 가지세요.", "때로는 혼자만의 시간을 가지며 내면을 성찰하는 노력을 해보세요."]
+    name: "The Entertainer",
+    description: "Optimistic and sociable, a natural entertainer who shines on stage.",
+    recommendation: "Actor, Event Planner, Entertainment Industry",
+    characteristics: ["Optimistic and sociable", "Excellent sense of humor", "Enjoys the present", "Enjoys attention"],
+    famous_figures: ["Elvis Presley", "Marilyn Monroe", "Avril Lavigne"],
+    best_environments: ["Roles expressing oneself in front of people", "Work environments with a free and joyful atmosphere", "Event and entertainment fields"],
+    growth_tips: ["Set long-term goals and practice acting systematically.", "Take time to deeply examine and understand your emotions.", "Sometimes take time alone to reflect on your inner self."]
   },
   "ENFP": {
-    name: "재기발랄한 활동가",
-    description: "자유로운 사고의 소유자로, 넘치는 에너지와 열정으로 삶을 살아갑니다.",
-    recommendation: "마케팅, 콘텐츠 크리에이터, 상담가",
-    characteristics: ["열정적이고 창의적", "새로운 아이디어 넘침", "사람들과의 관계를 중요시함", "긍정적이고 낙천적"],
-    famous_figures: ["월트 디즈니", "로빈 윌리엄스", "오프라 윈프리"],
-    best_environments: ["창의적이고 자유로운 분위기의 직무", "다양한 사람들과 협력하는 역할", "새로운 아이디어를 탐색하고 발전시키는 분야"],
-    growth_tips: ["현실적인 목표를 설정하고 꾸준히 실천하는 노력을 해보세요.", "때로는 자신의 감정을 깊이 들여다보고 정리하는 시간을 가지세요.", "모든 사람을 만족시키려 하지 말고 자신의 가치를 우선시하세요."]
+    name: "The Campaigner",
+    description: "A free-thinking individual who lives life with overflowing energy and passion.",
+    recommendation: "Marketing, Content Creator, Counselor",
+    characteristics: ["Passionate and creative", "Overflowing with new ideas", "Values relationships with people", "Positive and optimistic"],
+    famous_figures: ["Walt Disney", "Robin Williams", "Oprah Winfrey"],
+    best_environments: ["Creative and free-spirited roles", "Roles collaborating with diverse people", "Fields exploring and developing new ideas"],
+    growth_tips: ["Set realistic goals and practice consistently putting them into practice.", "Sometimes take time to deeply examine and organize your emotions.", "Don't try to please everyone and prioritize your own values."]
   },
   "ENTP": {
-    name: "뜨거운 논쟁을 즐기는 변론가",
-    description: "지적 도전을 즐기며, 토론과 논쟁을 통해 새로운 아이디어를 발견합니다.",
-    recommendation: "변호사, 컨설턴트, 기업가",
-    characteristics: ["지적이고 논리적", "도전적이고 비판적", "새로운 아이디어 탐구", "토론을 즐김"],
-    famous_figures: ["스티브 잡스", "벤자민 프랭클린", "토마스 에디슨"],
-    best_environments: ["복잡한 문제를 해결하는 직무", "새로운 아이디어를 제시하고 발전시키는 역할", "토론과 논쟁을 통해 성장하는 환경"],
-    growth_tips: ["타인의 감정을 이해하고 공감하는 연습을 해보세요.", "장기적인 계획을 세우고 꾸준히 실천하는 노력을 해보세요.", "때로는 자신의 주장을 굽히고 타인의 의견을 수용하는 유연성을 가지세요."]
+    name: "The Debater",
+    description: "Enjoys intellectual challenges and discovers new ideas through debate and discussion.",
+    recommendation: "Lawyer, Consultant, Entrepreneur",
+    characteristics: ["Intellectual and logical", "Challenging and critical", "Explores new ideas", "Enjoys debate"],
+    famous_figures: ["Steve Jobs", "Benjamin Franklin", "Thomas Edison"],
+    best_environments: ["Roles solving complex problems", "Roles presenting and developing new ideas", "Environments growing through debate and discussion"],
+    growth_tips: ["Practice understanding and empathizing with others' emotions.", "Try to set long-term plans and consistently put them into practice.", "Sometimes be flexible enough to yield your arguments and accept others' opinions."]
   },
   "ESTJ": {
-    name: "엄격한 관리자",
-    description: "체계적이고 현실적이며, 리더십을 발휘하여 일을 깔끔하게 처리합니다.",
-    recommendation: "경영 관리, 군대 장교, 프로젝트 매니저",
-    characteristics: ["체계적이고 현실적", "리더십이 강함", "책임감이 뛰어남", "규칙과 절차를 중요시함"],
-    famous_figures: ["조지 W. 부시", "힐러리 클린턴", "존 D. 록펠러"],
-    best_environments: ["조직을 관리하고 이끄는 리더 역할", "명확한 목표와 규칙이 있는 환경", "효율성과 생산성을 중요시하는 분야"],
-    growth_tips: ["타인의 의견을 경청하고 존중하는 태도를 가지세요.", "때로는 유연하게 상황에 대처하는 연습을 해보세요.", "자신의 감정을 인식하고 표현하는 데 시간을 투자하세요."]
+    name: "The Executive",
+    description: "Systematic and realistic, you demonstrate leadership and handle tasks cleanly.",
+    recommendation: "Business Management, Military Officer, Project Manager",
+    characteristics: ["Systematic and realistic", "Strong leadership", "Excellent sense of responsibility", "Values rules and procedures"],
+    famous_figures: ["George W. Bush", "Hillary Clinton", "John D. Rockefeller"],
+    best_environments: ["Leadership roles managing and guiding organizations", "Environments with clear goals and rules", "Fields prioritizing efficiency and productivity"],
+    growth_tips: ["Practice listening to and respecting others' opinions.", "Sometimes practice flexibly responding to situations.", "Invest time in recognizing and expressing your emotions."]
   },
   "ESFJ": {
-    name: "사교적인 외교관",
-    description: "친절하고 사교성이 뛰어나며, 사람들에게 봉사하는 것을 즐거워합니다.",
-    recommendation: "교사, HR 전문가, 사회 복지사",
-    characteristics: ["사교적이고 친절함", "타인을 돕는 것을 즐김", "책임감이 강함", "조화로운 관계를 추구함"],
-    famous_figures: ["빌 클린턴", "앤 해서웨이", "제니퍼 가너"],
-    best_environments: ["사람들과 소통하고 협력하는 직무", "따뜻하고 조화로운 분위기의 작업 환경", "타인의 성장을 돕는 역할"],
-    growth_tips: ["자신의 필요와 감정을 우선시하는 연습을 해보세요.", "갈등 상황에서 자신의 의견을 명확히 표현하는 법을 배우세요.", "때로는 혼자만의 시간을 가지며 내면을 성찰하는 노력을 해보세요."]
+    name: "The Consul",
+    description: "Kind and sociable, you enjoy serving people.",
+    recommendation: "Teacher, HR Professional, Social Worker",
+    characteristics: ["Sociable and kind", "Enjoys helping others", "Strong sense of responsibility", "Seeks harmonious relationships"],
+    famous_figures: ["Bill Clinton", "Anne Hathaway", "Jennifer Garner"],
+    best_environments: ["Roles communicating and collaborating with people", "Work environments with a warm and harmonious atmosphere", "Roles that help others grow"],
+    growth_tips: ["Practice prioritizing your own needs and feelings.", "Learn to clearly express your opinions in conflict situations.", "Sometimes take time alone to reflect on your inner self."]
   },
   "ENFJ": {
-    name: "정의로운 사회 운동가",
-    description: "카리스마와 넘치는 열정으로 청중을 압도하며 리더십을 발휘합니다.",
-    recommendation: "정치인, 코치, PR 전문가",
-    characteristics: ["카리스마 있고 열정적", "타인의 성장을 도움", "뛰어난 의사소통 능력", "이상주의적이고 긍정적"],
-    famous_figures: ["버락 오바마", "마하트마 간디", "오프라 윈프리"],
-    best_environments: ["사람들에게 영감을 주고 이끄는 리더 역할", "의미 있는 사회 변화를 추구하는 직무", "다양한 사람들과 소통하고 협력하는 환경"],
-    growth_tips: ["현실적인 목표를 설정하고 단계적으로 달성하는 연습을 해보세요.", "자신의 감정을 깊이 들여다보고 정리하는 시간을 가지세요.", "모든 사람을 만족시키려 하지 말고 자신의 가치를 우선시하세요."]
+    name: "The Protagonist",
+    description: "Charismatic and passionate, you command an audience and demonstrate leadership.",
+    recommendation: "Politician, Coach, PR Professional",
+    characteristics: ["Charismatic and passionate", "Helps others grow", "Excellent communication skills", "Idealistic and optimistic"],
+    famous_figures: ["Barack Obama", "Mahatma Gandhi", "Oprah Winfrey"],
+    best_environments: ["Leadership roles inspiring and guiding people", "Roles pursuing meaningful social change", "Environments communicating and collaborating with diverse people"],
+    growth_tips: ["Set realistic goals and practice achieving them step by step.", "Take time to deeply examine and organize your emotions.", "Don't try to please everyone and prioritize your own values."]
   },
   "ENTJ": {
-    name: "대담한 통솔자",
-    description: "지적 능력이 뛰어나고 단호하며, 목표를 향해 주저 없이 나아갑니다.",
-    recommendation: "최고 경영자(CEO), 투자 은행가, 변리사",
-    characteristics: ["지적이고 단호함", "리더십이 강함", "전략적 사고 능력", "목표 지향적"],
-    famous_figures: ["스티브 잡스", "마가렛 대처", "고든 램지"],
-    best_environments: ["조직을 이끌고 비전을 제시하는 리더 역할", "복잡한 문제를 해결하고 의사결정을 내리는 직무", "경쟁적이고 도전적인 환경"],
-    growth_tips: ["타인의 감정을 이해하고 공감하는 연습을 해보세요.", "때로는 유연하게 상황에 대처하는 연습을 해보세요.", "자신의 감정을 인식하고 표현하는 데 시간을 투자하세요."]
+    name: "The Commander",
+    description: "Intellectually capable and decisive, you move forward without hesitation towards your goals.",
+    recommendation: "CEO, Investment Banker, Patent Attorney",
+    characteristics: ["Intellectual and decisive", "Strong leadership", "Strategic thinking ability", "Goal-oriented"],
+    famous_figures: ["Steve Jobs", "Margaret Thatcher", "Gordon Ramsay"],
+    best_environments: ["Leadership roles guiding organizations and presenting visions", "Roles solving complex problems and making decisions", "Competitive and challenging environments"],
+    growth_tips: ["Practice understanding and empathizing with others' emotions.", "Sometimes practice flexibly responding to situations.", "Invest time in recognizing and expressing your emotions."]
   }
 };
