@@ -8,11 +8,11 @@ function HomePage() {
     <div className="min-h-screen bg-neutral-100 dark:bg-neutral-900 flex items-center justify-center p-4">
       <Card className="w-full max-w-xl p-8 text-center">
         <CardHeader>
-          <CardTitle className="text-4xl font-bold text-primary-600 dark:text-primary-400 mb-4">
-            MBTI 기반 직업 추천 테스트
+          <CardTitle className="text-4xl break-keep font-bold text-primary-600 dark:text-primary-400 mb-4">
+            MBTI-based Career Recommendation Test
           </CardTitle>
           <CardDescription className="text-lg text-neutral-700 dark:text-neutral-300 mb-8">
-            당신의 성격 유형을 알아보고, 꼭 맞는 직업을 찾아보세요!
+            Discover your personality type and find the perfect career match!
           </CardDescription>
         </CardHeader>
         <CardContent>
@@ -21,7 +21,7 @@ function HomePage() {
               className="w-full h-12 text-xl"
               variant="outline"
               onClick={() => {
-                const confirmRestart = window.confirm("테스트를 다시 시작하시겠습니까? 기존 진행 상황은 초기화됩니다.");
+                const confirmRestart = window.confirm("Are you sure you want to restart the test? Your current progress will be reset.");
                 if (confirmRestart) {
                   localStorage.removeItem('mbtiScores');
                   localStorage.removeItem('userAnswers');
@@ -30,7 +30,7 @@ function HomePage() {
                 }
               }}
             >
-              테스트 시작하기
+              Start Test
             </Button>
           </Link>
         </CardContent>
