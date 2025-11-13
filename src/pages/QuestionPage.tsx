@@ -1,17 +1,17 @@
 // src/pages/QuestionPage.tsx
-// src/pages/QuestionPage.tsx
 import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { questions } from '../data/questions';
 import { calculateMbtiType, shuffleArray } from '../utils/mbtiUtils';
-// import { Question } from '../data/questions'; // Question interface is not directly used here
+import { Card, CardHeader, CardTitle, CardContent, CardFooter } from '../components/ui/card';
+import { Button } from '../components/ui/button';
 
 function QuestionPage() {
   const { id } = useParams();
   const navigate = useNavigate();
   const currentQuestionIndex = parseInt(id || '1', 10) - 1; // 0-indexed
 
-  const [shuffledQuestionIds] = useState<number[]>(() => { // setShuffledQuestionIds is not used after initial setup
+  const [shuffledQuestionIds] = useState<number[]>(() => {
     const savedShuffledIds = localStorage.getItem('shuffledQuestionIds');
     if (savedShuffledIds) {
       return JSON.parse(savedShuffledIds);
@@ -74,49 +74,58 @@ function QuestionPage() {
   };
 
   if (!question) {
-    return <div>잘못된 접근입니다.</div>;
+    return <div className="text-neutral-900 dark:text-neutral-100">잘못된 접근입니다.</div>;
   }
 
   const progress = ((currentQuestionIndex + 1) / questions.length) * 100;
 
   return (
-    <div className="min-h-screen bg-gray-100 flex items-center justify-center p-4">
-      <div className="w-full max-w-xl p-8 bg-white shadow-xl rounded-lg">
-        <div className="mb-4">
-          <div className="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700">
-            <div
-              className="bg-indigo-600 h-2.5 rounded-full"
-              style={{ width: `${progress}%` }}
-            ></div>
+    <div className="min-h-screen bg-neutral-100 dark:bg-neutral-900 flex items-center justify-center p-4">
+      <Card className="w-full max-w-xl">
+        <CardHeader>
+          <div className="mb-4">
+            <div className="w-full bg-neutral-200 dark:bg-neutral-700 rounded-full h-2.5">
+              <div
+                className="bg-primary-600 dark:bg-primary-500 h-2.5 rounded-full"
+                style={{ width: `${progress}%` }}
+              ></div>
+            </div>
+            <p className="text-center text-sm text-neutral-600 dark:text-neutral-400 mt-2">{currentQuestionIndex + 1} / {questions.length}</p>
           </div>
-          <p className="text-center text-sm text-gray-600 mt-2">{currentQuestionIndex + 1} / {questions.length}</p>
-        </div>
-        <div className="text-center mb-8">
-          <p className="text-2xl font-bold text-indigo-600">Q{currentQuestionIndex + 1}</p>
-          <h2 className="text-xl text-gray-800 mt-2">{question.question}</h2>
-        </div>
-        <div className="space-y-4">
-          {question.answers.map((answer, index) => (
-            <button
-              key={index}
-              onClick={() => handleAnswer(answer.type)}
-              className="w-full bg-indigo-100 hover:bg-indigo-200 text-indigo-800 font-semibold py-4 rounded-lg transition duration-150"
-            >
-              {answer.text}
-            </button>
-          ))}
-          {currentQuestionIndex > 0 && (
-            <button
+          <CardTitle className="text-center mb-8">
+            <p className="text-2xl font-bold text-primary-600 dark:text-primary-400">Q{currentQuestionIndex + 1}</p>
+            <h2 className="text-xl text-neutral-800 dark:text-neutral-200 mt-2">{question.question}</h2>
+          </CardTitle>
+        </CardHeader>
+        <CardContent>
+          <div className="space-y-4">
+            {question.answers.map((answer, index) => (
+              <Button
+                key={index}
+                onClick={() => handleAnswer(answer.type)}
+                className="w-full"
+                variant="outline"
+              >
+                {answer.text}
+              </Button>
+            ))}
+          </div>
+        </CardContent>
+        {currentQuestionIndex > 0 && (
+          <CardFooter>
+            <Button
               onClick={handlePrevious}
-              className="w-full bg-gray-300 hover:bg-gray-400 text-gray-800 font-semibold py-4 rounded-lg transition duration-150 mt-4"
+              className="w-full mt-4"
+              variant="neutral"
             >
               이전 질문
-            </button>
-          )}
-        </div>
-      </div>
+            </Button>
+          </CardFooter>
+        )}
+      </Card>
     </div>
   );
 }
 
 export default QuestionPage;
+

@@ -2,6 +2,8 @@
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import { results } from '../data/results';
 import { mbtiStatistics } from '../data/mbtiStatistics'; // Import statistics
+import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from '../components/ui/card';
+import { Button } from '../components/ui/button';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 declare const Kakao: any; // Kakao SDK is a global object, typing it fully is beyond the scope of this task.
@@ -24,12 +26,19 @@ function ResultPage() {
   const generateExplanation = (mbtiType: string, scores: { [key: string]: number }) => {
     if (!scores) return "MBTI 유형 분석 정보를 찾을 수 없습니다.";
 
-    const explanationParts = [];
-    const traits = [
-      { pair: ['E', 'I'], name: '에너지의 방향', desc: { E: '외향형', I: '내향형' } },
-      { pair: ['S', 'N'], name: '정보 인식', desc: { S: '감각형', N: '직관형' } },
-      { pair: ['T', 'F'], name: '판단 기준', desc: { T: '사고형', F: '감정형' } },
-      { pair: ['J', 'P'], name: '생활 양식', desc: { J: '판단형', P: '인식형' } },
+    const explanationParts: string[] = [];
+    type TraitPair = 'E' | 'I' | 'S' | 'N' | 'T' | 'F' | 'J' | 'P';
+    type TraitDescription = Record<TraitPair, string>;
+    
+    const traits: Array<{
+      pair: [TraitPair, TraitPair];
+      name: string;
+      desc: TraitDescription;
+    }> = [
+      { pair: ['E', 'I'], name: '에너지의 방향', desc: { E: '외향형', I: '내향형', S: '', N: '', T: '', F: '', J: '', P: '' } },
+      { pair: ['S', 'N'], name: '정보 인식', desc: { S: '감각형', N: '직관형', E: '', I: '', T: '', F: '', J: '', P: '' } },
+      { pair: ['T', 'F'], name: '판단 기준', desc: { T: '사고형', F: '감정형', E: '', I: '', S: '', N: '', J: '', P: '' } },
+      { pair: ['J', 'P'], name: '생활 양식', desc: { J: '판단형', P: '인식형', E: '', I: '', S: '', N: '', T: '', F: '' } },
     ];
 
     traits.forEach(trait => {
@@ -55,8 +64,7 @@ function ResultPage() {
 
   const handleShareTwitter = () => {
     const text = `제 MBTI는 ${result.name} (${type}) 이고, 추천 직업은 ${result.recommendation} 입니다! #MBTI #직업추천`;
-    const url = shareLink;
-    const twitterUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`;
+    const twitterUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(shareLink)}`;
     window.open(twitterUrl, '_blank');
   };
 
@@ -106,70 +114,77 @@ function ResultPage() {
   const userMbtiStat = mbtiStatistics.find(stat => stat.type === type);
 
   return (
-    <div className="min-h-screen bg-gray-100 flex items-center justify-center p-4">
-      <div className="w-full max-w-xl p-8 bg-white shadow-xl rounded-lg text-center">
-        <p className="text-xl font-semibold text-indigo-500 mb-2">당신의 유형은</p>
-        <h1 className="text-5xl font-extrabold text-indigo-700 mb-4">{type}</h1>
-        <h1 className="text-4xl font-bold text-indigo-600 mb-4">{result.name}</h1>
-        <p className="text-gray-700 text-lg mb-6">{result.description}</p>
-        
-        <div className="bg-indigo-50 p-6 rounded-lg mb-6">
-          <h2 className="text-2xl font-bold text-indigo-800 mb-3">추천 직업</h2>
-          <p className="text-indigo-700 text-xl">{result.recommendation}</p>
-        </div>
-
-        {finalScores && (
-          <div className="bg-gray-50 p-6 rounded-lg mb-6 text-left">
-            <h2 className="text-2xl font-bold text-gray-800 mb-3">왜 이 MBTI가 나왔을까요?</h2>
-            <p className="text-gray-700 whitespace-pre-wrap">{mbtiExplanation}</p>
+    <div className="min-h-screen bg-neutral-100 dark:bg-neutral-900 flex items-center justify-center p-4">
+      <Card className="w-full max-w-xl text-center">
+        <CardHeader>
+          <CardDescription className="text-xl font-semibold text-neutral-500 dark:text-neutral-400 mb-2">당신의 유형은</CardDescription>
+          <CardTitle className="text-5xl font-extrabold text-neutral-700 dark:text-neutral-300 mb-4">{type}</CardTitle>
+          <CardTitle className="text-4xl font-bold text-neutral-600 dark:text-neutral-400 mb-4">{result.name}</CardTitle>
+          <CardDescription className="text-neutral-700 dark:text-neutral-300 text-lg mb-6">{result.description}</CardDescription>
+        </CardHeader>
+        <CardContent>
+          <div className="bg-neutral-50 dark:bg-neutral-900 p-6 rounded-lg mb-6">
+            <h2 className="text-2xl font-bold text-neutral-800 dark:text-neutral-200 mb-3">추천 직업</h2>
+            <p className="text-neutral-700 dark:text-neutral-300 text-xl">{result.recommendation}</p>
           </div>
-        )}
 
-        {userMbtiStat && (
-          <div className="bg-blue-50 p-6 rounded-lg mb-6 text-left">
-            <h2 className="text-2xl font-bold text-blue-800 mb-3">MBTI 유형 통계</h2>
-            <p className="text-blue-700">
-              당신의 MBTI 유형인 <span className="font-bold">{userMbtiStat.type}</span>는 전체 인구의 약 <span className="font-bold">{userMbtiStat.percentage}%</span>를 차지합니다.
-            </p>
-            <p className="text-blue-700 mt-2">
-              이는 {userMbtiStat.percentage > 10 ? "비교적 흔한 유형" : userMbtiStat.percentage > 5 ? "평균적인 유형" : "희귀한 유형"}에 속합니다.
-            </p>
+          {finalScores && (
+            <div className="bg-neutral-50 dark:bg-neutral-700 p-6 rounded-lg mb-6 text-left">
+              <h2 className="text-2xl font-bold text-neutral-800 dark:text-neutral-200 mb-3">왜 이 MBTI가 나왔을까요?</h2>
+              <p className="text-neutral-700 dark:text-neutral-300 whitespace-pre-wrap">{mbtiExplanation}</p>
+            </div>
+          )}
+
+          {userMbtiStat && (
+            <div className="bg-blue-50 dark:bg-blue-900 p-6 rounded-lg mb-6 text-left">
+              <h2 className="text-2xl font-bold text-blue-800 dark:text-blue-200 mb-3">MBTI 유형 통계</h2>
+              <p className="text-blue-700 dark:text-blue-300">
+                당신의 MBTI 유형인 <span className="font-bold">{userMbtiStat.type}</span>는 전체 인구의 약 <span className="font-bold">{userMbtiStat.percentage}%</span>를 차지합니다.
+              </p>
+              <p className="text-blue-700 dark:text-blue-300 mt-2">
+                이는 {userMbtiStat.percentage > 10 ? "비교적 흔한 유형" : userMbtiStat.percentage > 5 ? "평균적인 유형" : "희귀한 유형"}에 속합니다.
+              </p>
+            </div>
+          )}
+        </CardContent>
+        <CardFooter>
+          <div className="flex flex-col space-y-4 w-full">
+            <Button
+              onClick={handleShareTwitter}
+              className="w-full"
+            >
+              트위터로 공유하기
+            </Button>
+            <Button
+              onClick={handleShareKakao}
+              className="w-full"
+            >
+              카카오톡으로 공유하기
+            </Button>
+            <Button
+              onClick={handleShareFacebook}
+              className="w-full"
+            >
+              페이스북으로 공유하기
+            </Button>
+            <Button
+              onClick={handleCopyLink}
+              variant="neutral"
+              className="w-full"
+            >
+              링크 복사하기
+            </Button>
+            <Link
+              to="/"
+              className="w-full"
+            >
+              <Button variant="default">
+                다시 테스트하기
+              </Button>
+            </Link>
           </div>
-        )}
-        
-        <div className="flex flex-col space-y-4">
-          <button
-            onClick={handleShareTwitter}
-            className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-6 rounded-lg transition-colors"
-          >
-            트위터로 공유하기
-          </button>
-          <button
-            onClick={handleShareKakao}
-            className="bg-yellow-400 hover:bg-yellow-500 text-gray-800 font-bold py-3 px-6 rounded-lg transition-colors"
-          >
-            카카오톡으로 공유하기
-          </button>
-          <button
-            onClick={handleShareFacebook}
-            className="bg-blue-700 hover:bg-blue-800 text-white font-bold py-3 px-6 rounded-lg transition-colors"
-          >
-            페이스북으로 공유하기
-          </button>
-          <button
-            onClick={handleCopyLink}
-            className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-3 px-6 rounded-lg transition-colors"
-          >
-            링크 복사하기
-          </button>
-          <Link
-            to="/"
-            className="bg-indigo-100 hover:bg-indigo-200 text-indigo-700 font-medium py-3 px-6 rounded-lg transition-colors text-center"
-          >
-            다시 테스트하기
-          </Link>
-        </div>
-      </div>
+        </CardFooter>
+      </Card>
     </div>
   );
 }
