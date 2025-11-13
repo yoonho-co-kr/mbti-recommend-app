@@ -28,7 +28,7 @@ function App() {
 
   return (
     <Router>
-      <div className="min-h-screen bg-neutral-100 dark:bg-neutral-900 text-neutral-900 dark:text-neutral-100 transition-colors duration-300">
+      <div className="min-h-screen border-none bg-neutral-100 dark:bg-neutral-900 text-neutral-900 dark:text-neutral-100 transition-colors duration-300">
         <Button
           onClick={toggleDarkMode}
           variant="neutral"
