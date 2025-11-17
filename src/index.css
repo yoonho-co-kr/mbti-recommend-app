@@ -51,6 +51,9 @@
 *{
   border-color: var(--border);
 }
+body{
+  border: none;
+}
 @layer base {
   body {
     @apply bg-background text-foreground border border-border;
